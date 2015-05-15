@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ember Tether Tests</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for 'head'}}
+    {{content-for 'test-head'}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/dummy.css">
+    <link rel="stylesheet" href="assets/test-support.css">
+
+    <style>
+      #ember-testing-container {
+        position: absolute;
+        background: rgba(255, 0, 255, 0.1);
+        bottom: 0;
+        right: 0;
+        width: initial;
+        height: initial;
+        overflow: auto;
+        z-index: 9999;
+        border: 10px solid lime;
+      }
+      #ember-testing {
+        zoom: 100%;
+      }
+      .note {
+        font-size: 1.5rem;
+        margin: 5px auto;
+        background-color: cyan;
+        border: dotted 10px black;
+        padding: 10px 100px;
+        width: 80%;
+      }
+      strong {
+        color: white;
+      }
+    </style>
+
+    {{content-for 'head-footer'}}
+    {{content-for 'test-head-footer'}}
+  </head>
+  <body>
+    <p class='note'>
+      <strong>NOTE:</strong> We have freed the #ember-testing-container div from its usual bounds
+      and set the #ember-testing-container zoom to 100% in order to observe and
+      properly test Ember Tether's positioning behavior.
+    </p>
+
+    {{content-for 'body'}}
+    {{content-for 'test-body'}}
+    <script src="assets/vendor.js"></script>
+    <script src="assets/test-support.js"></script>
+    <script src="assets/dummy.js"></script>
+    <script src="testem.js"></script>
+    <script src="assets/test-loader.js"></script>
+
+    {{content-for 'body-footer'}}
+    {{content-for 'test-body-footer'}}
+  </body>
+</html>
