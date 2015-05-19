@@ -54,23 +54,25 @@ Similarly, if you use `ember-tether` in a route's template, it will
 render its content next to the target element when the route is entered
 and remove it when the route is exited.
 
-## Tether Dependency Configuration
+## Using ember-tether in Your Own Addon
 
 ember-tether depends on [Hubspot Tether](http://github.hubspot.com/tether/), which is imported as a bower dependency. When using ember-tether directly in an Ember app, everything will work out of the box with no configuration
 necessary.
 
-When using ember-tether nested within another addon, ember-tether cannot
-import its dependencies. Include the following config in the addon's `included`
-hook to tell `ember-tether` exclude its dependency import:
+However, addons nested in other addons do not have access to `app.import` in their included hook and are therefore unable to import their own dependencies. This is not a problem unique to ember-tether.
+
+The bad news is that this makes it more difficult to use ember-tether in an addon you may be developing. The good news is that ember-tether provides an `importBowerDependencies` hook for just this purpose.
+
+So... when using ember-tether nested within your addon, use the following code in the addon's `included` hook:
 
 ```javascript
-included: function(app) {
-  // ...
-  app.options = app.options || {};
-  app.options.emberTether = app.options.emberTether || {};
-  app.options.emberTether.excludeDependencies = false;
-  // ...
-}
+included: function(app){
+  this._super.included.apply(this, app);
+  var emberTetherAddon = this.addons.filter(function(addon) {
+    return addon.name == 'ember-tether';
+  })[0];
+  emberTetherAddon.importBowerDependencies(app);
+},
 ```
 
 ## Development Setup
