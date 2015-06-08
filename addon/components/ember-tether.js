@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-const observer = Ember.observer;
-const get = Ember.get;
-const run = Ember.run;
+const { observer, get, run, computed } = Ember;
 
 export default Ember.Component.extend({
   classNames: ['ember-tether'],
@@ -40,16 +38,21 @@ export default Ember.Component.extend({
     'constraints',
     'optimizations',
     function() {
-      this._tether.setOptions(this._tetherOptions());
+      this.removeTether(this._tether);
+      this.addTether();
     }
   ),
 
   addTether: function() {
-    this._tether = new Tether(this._tetherOptions());
+    if (get(this, '_tetherTarget')) {
+      this._tether = new Tether(this._tetherOptions());
+    }
   },
 
   removeTether: function(tether) {
-    tether.destroy();
+    if (tether) {
+      tether.destroy();
+    }
   },
 
   removeElement: function(element) {
@@ -58,12 +61,19 @@ export default Ember.Component.extend({
     }
   },
 
-  _tetherOptions: function() {
-    let options = { element: this.element };
-    options.target = get(this, 'target');
-    if (Ember.View.detectInstance(options.target)) {
-      options.target = options.target.element;
+  _tetherTarget: computed('target', function() {
+    let t = get(this, 'target');
+    if (t instanceof Ember.View) {
+      t = t.element;
     }
+    return t;
+  }),
+
+  _tetherOptions: function() {
+    let options = {
+      element: this.element,
+      target: get(this, '_tetherTarget')
+    };
     [ 'classPrefix',
       'attachment',
       'targetAttachment',

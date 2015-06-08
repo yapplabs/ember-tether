@@ -27,10 +27,24 @@
   Trap 'Another tethered thing' within the box. Scroll to see it pin.
   Constraints are <span class='highlight'>{{exampleConstraintsOn}}</span>
 </div>
+<div class='demo'>
+  <button {{action 'toggleTargetWithin'}}>Toggle Target</button>
+  Remove target from DOM. Watch 'A third tethered thing' behave sensibly.
+  Target in DOM: <span class='highlight'>{{isShowingTargetWithin}}</span>
+</div>
+
 
 <div class='scroll-box'>
-  <div id='tether-target-1' class='tether-target'>1</div>
-  <div id='tether-target-2' class='tether-target'>2</div>
+  <div id='tether-target-1' class='tether-target'>
+    1
+    {{#view viewName='exampleView' class='example-view'}}{{/view}}
+  </div>
+  <div id='tether-target-2' class='tether-target'>
+    2
+    {{#if isShowingTargetWithin}}
+      <div class='within'></div>
+    {{/if}}
+  </div>
   <div id='tether-target-3' class='tether-target'>3</div>
   <div id='tether-target-4' class='tether-target'>4</div>
   <div id='tether-target-5' class='tether-target'>5</div>
@@ -55,6 +69,26 @@
       constraints=exampleConstraints
   }}
     Another tethered thing
+  {{/ember-tether}}
+
+  {{#ember-tether
+      target=exampleTargetWithin
+      targetAttachment='top right'
+      attachment='top left'
+      class='third-tethered-thing'
+  }}
+    A third tethered thing
+    Target in DOM: <span class='highlight'>{{isShowingTargetWithin}}</span>
+    <button {{action 'toggleTargetWithin'}}>Toggle Target</button>
+  {{/ember-tether}}
+
+  {{#ember-tether
+      target=view.exampleView
+      targetAttachment='top right'
+      attachment='top left'
+      class='view-tether'
+  }}
+    View
   {{/ember-tether}}
 
 </div>

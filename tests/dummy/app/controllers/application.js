@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-const computed = Ember.computed;
-const get = Ember.get;
-const set = Ember.set;
+const { computed, get, set, observer, run } = Ember;
 
 export default Ember.Controller.extend({
   exampleTarget: 1,
@@ -47,6 +45,20 @@ export default Ember.Controller.extend({
   }),
   exampleConstraints: null,
 
+  isShowingTargetWithin: true,
+  computedTargetWithin: computed('isShowingTargetWithin', function() {
+    if (get(this, 'isShowingTargetWithin')) {
+      return '#tether-target-2 .within';
+    }
+  }),
+  exampleTargetWithin: '#tether-target-2 .within',
+
+  computedTargetWithinDidChange: observer('isShowingTargetWithin', function() {
+    run.next(() => {
+      set(this, 'exampleTargetWithin', get(this, 'computedTargetWithin'));
+    });
+  }),
+
   actions: {
     switchTether: function() {
       const dt = get(this, 'exampleTarget');
@@ -76,6 +88,9 @@ export default Ember.Controller.extend({
       } else {
         set(this, 'exampleConstraints', null);
       }
+    },
+    toggleTargetWithin: function() {
+      this.toggleProperty('isShowingTargetWithin');
     }
   }
 });
