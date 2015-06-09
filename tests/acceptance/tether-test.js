@@ -37,6 +37,14 @@ assert.rightOf = function(thingSelector, targetSelector) {
   const leftOf = thing.offset().left > target.offset().left;
   assert.ok(leftOf, `${thingSelector} right of ${targetSelector}`);
 };
+assert.classPresent = function(thingSelector, className) {
+  const thing = Ember.$(thingSelector);
+  assert.ok(thing.attr('class').indexOf(className) > -1);
+};
+assert.classAbsent = function(thingSelector, className) {
+  const thing = Ember.$(thingSelector);
+  assert.ok(thing.attr('class').indexOf(className) <= -1);
+};
 
 function getTetherComponent(selector) {
   const anotherEl = Ember.$(selector)[0];
@@ -52,6 +60,15 @@ test('tethering a thing to a target', function(assert) {
 
     assert.topAligned('.another-tethered-thing', '#tether-target-3');
     assert.leftOf('.another-tethered-thing', '#tether-target-3');
+  });
+});
+
+test('tethering to an Ember View', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.topAligned('.view-tether', '.example-view');
+    assert.rightOf('.view-tether', '.example-view');
   });
 });
 
@@ -72,5 +89,32 @@ test('changing tether attachment', function(assert) {
   andThen(function() {
     assert.topAligned('.another-tethered-thing', '#tether-target-3');
     assert.rightOf('.another-tethered-thing', '#tether-target-3');
+  });
+});
+
+test('surviving target removal', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.topAligned('.third-tethered-thing', '#tether-target-2 .within');
+    assert.rightOf('.third-tethered-thing', '#tether-target-2 .within');
+    assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
+    assert.ok(Ember.$('.third-tethered-thing .highlight').text() === 'true');
+  });
+
+  click('.demo button:contains(Toggle Target)');
+
+  andThen(function() {
+    assert.classAbsent('.third-tethered-thing', 'ember-tether-enabled');
+    assert.ok(Ember.$('.third-tethered-thing .highlight').text() === 'false');
+  });
+
+  click('.demo button:contains(Toggle Target)');
+
+  andThen(function() {
+    assert.topAligned('.third-tethered-thing', '#tether-target-2 .within');
+    assert.rightOf('.third-tethered-thing', '#tether-target-2 .within');
+    assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
+    assert.ok(Ember.$('.third-tethered-thing .highlight').text() === 'true');
   });
 });
