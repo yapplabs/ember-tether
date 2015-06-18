@@ -63,7 +63,7 @@ export default Ember.Component.extend({
 
   _tetherTarget: computed('target', function() {
     let t = get(this, 'target');
-    if (t instanceof Ember.View) {
+    if (t && t.element) {
       t = t.element;
     }
     return t;
