@@ -2,6 +2,10 @@
 
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
+## Live Demo
+
+View a live demo here: [http://yapplabs.github.io/ember-tether/](http://yapplabs.github.io/ember-tether/)
+
 ## Example Usage
 
 Given the following DOM:
