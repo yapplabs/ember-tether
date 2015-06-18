@@ -3,7 +3,7 @@ import QUnit from 'qunit';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
-var application;
+var application, viewRegistry;
 const assert = QUnit.assert;
 const abs = Math.abs;
 const set = Ember.set;
@@ -11,6 +11,12 @@ const set = Ember.set;
 module('Acceptance | tether test', {
   beforeEach: function() {
     application = startApp();
+    viewRegistry = application.__container__.lookup('-view-registry:main');
+
+    // for < 1.12.0 support
+    if (!viewRegistry) {
+      viewRegistry = Ember.View.views;
+    }
   },
 
   afterEach: function() {
@@ -48,7 +54,7 @@ assert.classAbsent = function(thingSelector, className) {
 
 function getTetherComponent(selector) {
   const anotherEl = Ember.$(selector)[0];
-  return Ember.View.views[anotherEl.id];
+  return viewRegistry[anotherEl.id];
 }
 
 test('tethering a thing to a target', function(assert) {
