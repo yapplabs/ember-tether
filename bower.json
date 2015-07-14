@@ -11,6 +11,6 @@
     "jquery": "^1.11.1",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
-    "tether": "~0.7.2"
+    "tether": "pzuraq/tether#add-option-to-disable-move-element"
   }
 }
