@@ -14,7 +14,7 @@ Given the following DOM:
 <body class="ember-application">
   <!-- Target must be in the same element as your ember app -->
   <!-- otherwise events/bindings on the tethered content will not work -->
-  <div id='a-nice-person'>
+  <div id="a-nice-person">
     Nice person
   </div>
   <div class="ember-view">
