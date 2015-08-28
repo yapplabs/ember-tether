@@ -15,30 +15,8 @@
     <link rel="stylesheet" href="assets/test-support.css">
 
     <style>
-      #ember-testing-container {
-        position: absolute;
-        background: rgba(255, 0, 255, 0.1);
-        bottom: 0;
-        right: 0;
-        width: initial;
-        height: initial;
-        overflow: auto;
-        z-index: 9999;
-        border: 10px solid lime;
-      }
-      #ember-testing {
-        zoom: 100%;
-      }
-      .note {
-        font-size: 1.5rem;
-        margin: 5px auto;
-        background-color: cyan;
-        border: dotted 10px black;
-        padding: 10px 100px;
-        width: 80%;
-      }
-      strong {
-        color: white;
+      .wormhole-root-target {
+        position: fixed;
       }
     </style>
 
@@ -46,12 +24,6 @@
     {{content-for 'test-head-footer'}}
   </head>
   <body>
-    <p class='note'>
-      <strong>NOTE:</strong> We have freed the #ember-testing-container div from its usual bounds
-      and set the #ember-testing-container zoom to 100% in order to observe and
-      properly test Ember Tether's positioning behavior.
-    </p>
-
     {{content-for 'body'}}
     {{content-for 'test-body'}}
     <script src="assets/vendor.js"></script>

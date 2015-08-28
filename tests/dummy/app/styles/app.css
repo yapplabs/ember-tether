@@ -19,6 +19,7 @@ body {
   background-color: orange;
   border: dotted 3px blue;
   display: block;
+  position: absolute;
 }
 
 .example-view {

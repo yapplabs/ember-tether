@@ -20,6 +20,9 @@ module('Acceptance | tether test', {
   },
 
   afterEach: function() {
+    Ember.run(() => {
+      application.__container__.lookup('service:wormhole-target').get('targets').clear();
+    });
     Ember.run(application, 'destroy');
   }
 });
@@ -31,6 +34,15 @@ assert.topAligned = function(thingSelector, targetSelector) {
   const withinOnePixel = topDifference < 1;
   assert.ok(withinOnePixel, `${thingSelector} top within one pixel of ${targetSelector} top`);
 };
+
+assert.bottomAligned = function(thingSelector, targetSelector) {
+  const thing = Ember.$(thingSelector);
+  const target = Ember.$(targetSelector);
+  const topDifference = abs(thing.offset().top - (target.offset().top + target.outerHeight()));
+  const withinOnePixel = topDifference < 1;
+  assert.ok(withinOnePixel, `${thingSelector} top within one pixel of ${targetSelector} bottom`);
+};
+
 assert.leftOf = function(thingSelector, targetSelector) {
   const thing = Ember.$(thingSelector);
   const target = Ember.$(targetSelector);
@@ -52,10 +64,6 @@ assert.classAbsent = function(thingSelector, className) {
   assert.ok(thing.attr('class').indexOf(className) <= -1);
 };
 
-function getTetherComponent(selector) {
-  const anotherEl = Ember.$(selector)[0];
-  return viewRegistry[anotherEl.id];
-}
 
 test('tethering a thing to a target', function(assert) {
   visit('/');
@@ -86,15 +94,12 @@ test('changing tether attachment', function(assert) {
     assert.leftOf('.another-tethered-thing', '#tether-target-3');
   });
 
-  andThen(function() {
-    const anotherThing = getTetherComponent('.another-tethered-thing');
-    set(anotherThing, 'attachment', 'top left');
-    set(anotherThing, 'targetAttachment', 'top right');
-  });
+  click('.demo button:contains(Rotate Tether)');
+  click('.demo button:contains(Rotate Tether)');
 
   andThen(function() {
-    assert.topAligned('.another-tethered-thing', '#tether-target-3');
-    assert.rightOf('.another-tethered-thing', '#tether-target-3');
+    assert.bottomAligned('.another-tethered-thing', '#tether-target-3');
+    assert.leftOf('.another-tethered-thing', '#tether-target-3');
   });
 });
 

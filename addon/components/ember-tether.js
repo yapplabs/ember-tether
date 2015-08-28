@@ -1,9 +1,13 @@
 import Ember from 'ember';
+import EmberWormhole from 'ember-wormhole/components/ember-wormhole';
+import layout from '../templates/components/ember-tether';
 
 const { observer, get, run, computed } = Ember;
 
-export default Ember.Component.extend({
-  classNames: ['ember-tether'],
+const { reads } = computed;
+
+export default EmberWormhole.extend({
+  layout: layout,
   classPrefix: 'ember-tether',
   target: null,
   attachment: null,
@@ -14,15 +18,19 @@ export default Ember.Component.extend({
   constraints: null,
   optimizations: null,
 
+  to: reads('wormholeTargetService.defaultTargets.emberTether'),
+
   didInsertElement: function() {
+    this._super();
+
     this.addTether();
   },
 
   willDestroyElement: function() {
+    this._super();
+
     var tether = this._tether;
-    var element = this.element;
     run.schedule('render', () => {
-      this.removeElement(element);
       this.removeTether(tether);
     });
   },
@@ -37,6 +45,8 @@ export default Ember.Component.extend({
     'targetModifier',
     'constraints',
     'optimizations',
+    'renderInPlace',
+    'destinationName',
     function() {
       this.removeTether(this._tether);
       this.addTether();
@@ -44,7 +54,7 @@ export default Ember.Component.extend({
   ),
 
   addTether: function() {
-    if (get(this, '_tetherTarget')) {
+    if (!this.get('renderInPlace') && get(this, '_tetherTarget')) {
       this._tether = new Tether(this._tetherOptions());
     }
   },
@@ -52,12 +62,6 @@ export default Ember.Component.extend({
   removeTether: function(tether) {
     if (tether) {
       tether.destroy();
-    }
-  },
-
-  removeElement: function(element) {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
     }
   },
 
@@ -71,8 +75,9 @@ export default Ember.Component.extend({
 
   _tetherOptions: function() {
     let options = {
-      element: this.element,
-      target: get(this, '_tetherTarget')
+      element: this._firstNode,
+      target: get(this, '_tetherTarget'),
+      moveRoot: false
     };
     [ 'classPrefix',
       'attachment',
