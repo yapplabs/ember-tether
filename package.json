@@ -39,8 +39,7 @@
     "tether"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.0.0",
-    "ember-wormhole": "^0.3.1"
+    "ember-cli-babel": "^5.0.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",

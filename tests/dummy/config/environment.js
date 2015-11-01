@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/ember-tether'
+    ENV.baseURL = '/ember-tether';
   }
 
   return ENV;
