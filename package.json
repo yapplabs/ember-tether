@@ -19,6 +19,8 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
+    "broccoli-funnel": "^0.2.11",
+    "broccoli-unwatched-tree": "^0.1.1",
     "ember-cli": "0.2.7",
     "ember-cli-app-version": "0.3.3",
     "ember-cli-content-security-policy": "0.4.0",
@@ -33,7 +35,8 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-suave": "1.2.2",
-    "ember-try": "0.0.6"
+    "ember-try": "0.0.6",
+    "tether": "^1.1.1"
   },
   "keywords": [
     "ember-addon",
