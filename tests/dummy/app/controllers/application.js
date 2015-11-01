@@ -60,28 +60,28 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    registerComponentTarget: function(component) {
+    registerComponentTarget(component) {
       this.set('exampleTargetComponent', component);
     },
-    switchTether: function() {
+    switchTether() {
       const dt = get(this, 'exampleTarget');
       const nt = dt === 7 ? 1 : dt + 1;
       set(this, 'exampleTarget', nt);
     },
-    rotateTether: function() {
+    rotateTether() {
       const numConfigs = get(this, 'attachmentConfigurations').length;
       const i = get(this, 'attachmentConfigurationIndex');
       const nc = i === (numConfigs - 1) ? 0 : i + 1;
       set(this, 'attachmentConfigurationIndex', nc);
     },
-    toggleOffset: function() {
+    toggleOffset() {
       if (Ember.isNone(get(this, 'exampleOffset'))) {
         set(this, 'exampleOffset', '0 -20px');
       } else {
         set(this, 'exampleOffset', null);
       }
     },
-    toggleConstraints: function() {
+    toggleConstraints() {
       if (Ember.isNone(get(this, 'exampleConstraints'))) {
         set(this, 'exampleConstraints', [{
           to: 'scrollParent',
@@ -92,7 +92,7 @@ export default Ember.Controller.extend({
         set(this, 'exampleConstraints', null);
       }
     },
-    toggleTargetWithin: function() {
+    toggleTargetWithin() {
       this.toggleProperty('isShowingTargetWithin');
     }
   }
