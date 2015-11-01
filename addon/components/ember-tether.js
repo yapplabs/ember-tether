@@ -14,16 +14,15 @@ export default Ember.Component.extend({
   constraints: null,
   optimizations: null,
 
-  didInsertElement: function() {
+  didInsertElement() {
     this.addTether();
   },
 
-  willDestroyElement: function() {
-    var tether = this._tether;
-    var element = this.element;
+  willDestroyElement() {
+    const { _tether, element } = this;
     run.schedule('render', () => {
       this.removeElement(element);
-      this.removeTether(tether);
+      this.removeTether(_tether);
     });
   },
 
@@ -43,19 +42,19 @@ export default Ember.Component.extend({
     }
   ),
 
-  addTether: function() {
+  addTether() {
     if (get(this, '_tetherTarget')) {
       this._tether = new Tether(this._tetherOptions());
     }
   },
 
-  removeTether: function(tether) {
+  removeTether(tether) {
     if (tether) {
       tether.destroy();
     }
   },
 
-  removeElement: function(element) {
+  removeElement(element) {
     if (element.parentNode) {
       element.parentNode.removeChild(element);
     }
@@ -69,7 +68,7 @@ export default Ember.Component.extend({
     return t;
   }),
 
-  _tetherOptions: function() {
+  _tetherOptions() {
     let options = {
       element: this.element,
       target: get(this, '_tetherTarget')
