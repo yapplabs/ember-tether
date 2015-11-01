@@ -21,14 +21,14 @@ body {
   display: block;
 }
 
-.example-view {
+.example-component {
   background-color: black;
   height: 20px;
   width: 20px;
   margin: 10px;
 }
 
-.view-tether {
+.component-tether {
   height: 20px;
   width: 80px;
 }

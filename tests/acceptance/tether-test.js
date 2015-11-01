@@ -69,12 +69,12 @@ test('tethering a thing to a target', function(assert) {
   });
 });
 
-test('tethering to an Ember View', function(assert) {
+test('tethering to an Ember Component', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.topAligned('.view-tether', '.example-view');
-    assert.rightOf('.view-tether', '.example-view');
+    assert.topAligned('.component-tether', '.example-component');
+    assert.rightOf('.component-tether', '.example-component');
   });
 });
 
