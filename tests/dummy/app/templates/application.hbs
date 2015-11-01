@@ -37,7 +37,7 @@
 <div class='scroll-box'>
   <div id='tether-target-1' class='tether-target'>
     1
-    {{#view viewName='exampleView' class='example-view'}}{{/view}}
+    {{example-component registerComponentTarget='registerComponentTarget'}}
   </div>
   <div id='tether-target-2' class='tether-target'>
     2
@@ -83,12 +83,12 @@
   {{/ember-tether}}
 
   {{#ember-tether
-      target=view.exampleView
+      target=exampleTargetComponent
       targetAttachment='top right'
       attachment='top left'
-      class='view-tether'
+      class='component-tether'
   }}
-    View
+    Component
   {{/ember-tether}}
 
 </div>

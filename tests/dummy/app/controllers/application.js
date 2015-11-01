@@ -60,6 +60,9 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    registerComponentTarget: function(component) {
+      this.set('exampleTargetComponent', component);
+    },
     switchTether: function() {
       const dt = get(this, 'exampleTarget');
       const nt = dt === 7 ? 1 : dt + 1;
