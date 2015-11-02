@@ -4,6 +4,11 @@ export default Ember.Component.extend({
   classNames: ['example-component'],
 
   didInsertElement() {
-    this.sendAction('registerComponentTarget', this);
+    Ember.run.schedule('afterRender', () => {
+      if (this.isDestroying || this.isDestroyed) {
+        return;
+      }
+      this.sendAction('registerComponentTarget', this);
+    });
   }
 });
