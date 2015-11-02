@@ -16,6 +16,7 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this.addTether();
+    this._super(...arguments);
   },
 
   willDestroyElement() {
@@ -24,6 +25,7 @@ export default Ember.Component.extend({
       this.removeElement(element);
       this.removeTether(_tether);
     });
+    this._super(...arguments);
   },
 
   tetherDidChange: observer(
