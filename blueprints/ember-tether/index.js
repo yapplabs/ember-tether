@@ -2,6 +2,6 @@ module.exports = {
   normalizeEntityName: function() {},
 
   afterInstall: function() {
-    return this.addBowerPackageToProject('tether', '~0.7.2');
+    return this.addBowerPackageToProject('tether', '^1.0.3');
   }
 };

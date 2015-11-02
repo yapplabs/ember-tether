@@ -13,4 +13,8 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 var app = new EmberAddon();
 
+if (app.env === 'test') {
+  app.import('bower_components/bind-polyfill/index.js');
+}
+
 module.exports = app.toTree();
