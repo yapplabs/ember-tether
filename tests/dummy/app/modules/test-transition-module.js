@@ -5,8 +5,7 @@ let transitionModule = {
 
   position(props) {
     let className = `${this.options.classPrefix}-${transitionModule.className}`;
-    console.log(className);
-    let hasClass = Tether.Utils.hasClass(this.element, className);
+    let hasClass = window.Tether.Utils.hasClass(this.element, className);
     let lastOffset = this._cacheOffset;
 
     let shouldAddClass = lastOffset &&
@@ -14,9 +13,9 @@ let transitionModule = {
       Math.abs(props.top - lastOffset[1]) <= transitionModule.thresholdY;
 
     if (!hasClass && shouldAddClass) {
-      Tether.Utils.addClass(this.element, className);
+      window.Tether.Utils.addClass(this.element, className);
     } else if (hasClass && !shouldAddClass) {
-      Tether.Utils.removeClass(this.element, className);
+      window.Tether.Utils.removeClass(this.element, className);
     }
 
     // Cache the offset

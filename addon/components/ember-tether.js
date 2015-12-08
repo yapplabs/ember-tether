@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import TransitionModule from 'ember-tether/modules/transition-module';
 
 const { observer, get, run, computed } = Ember;
 
@@ -14,10 +13,17 @@ export default Ember.Component.extend({
   targetModifier: null,
   constraints: null,
   optimizations: null,
+  modules: null,
 
   didInsertElement() {
     this.addTether();
     this._super(...arguments);
+    let modules = this.get('modules');
+    if (modules) {
+      modules.forEach((module) => {
+        Tether.modules.push(module);
+      });
+    }
   },
 
   willDestroyElement() {
@@ -47,7 +53,6 @@ export default Ember.Component.extend({
 
   addTether() {
     if (get(this, '_tetherTarget')) {
-      Tether.modules.push(TransitionModule);
       this._tether = new Tether(this._tetherOptions());
     }
   },
