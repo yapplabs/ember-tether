@@ -5,7 +5,6 @@ let transitionModule = {
 
   position(props) {
     let className = `${this.options.classPrefix}-${transitionModule.className}`;
-    console.log(className);
     let hasClass = Tether.Utils.hasClass(this.element, className);
     let lastOffset = this._cacheOffset;
 
