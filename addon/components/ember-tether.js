@@ -16,6 +16,12 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this.addTether();
+    run.scheduleOnce('afterRender', () => {
+      const { _tether } = this;
+      if (_tether) {
+        _tether.position();
+      }
+    });
     this._super(...arguments);
   },
 
