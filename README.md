@@ -6,6 +6,12 @@ This ember-cli addon provides a component that allows for 'tethering' a block to
 
 View a live demo here: [http://yapplabs.github.io/ember-tether/](http://yapplabs.github.io/ember-tether/)
 
+## Installation
+
+`ember install ember-tether`
+
+*Note:* Ember CLI versions < 0.2.3 should use `ember install:addon` instead of `ember install`
+
 ## Example Usage
 
 Given the following DOM:
