@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import TestTransitionModule from '../modules/test-transition-module';
 
 const { computed, get, set, observer, run } = Ember;
 
@@ -24,6 +25,7 @@ export default Ember.Controller.extend({
   ],
   attachmentConfigurationIndex: 0,
 
+  testModules: [TestTransitionModule],
   exampleTargetAttachment: computed('attachmentConfigurationIndex', function() {
     const i = get(this, 'attachmentConfigurationIndex');
     const config = get(this, 'attachmentConfigurations')[i];

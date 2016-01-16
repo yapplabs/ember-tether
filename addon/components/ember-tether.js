@@ -13,10 +13,17 @@ export default Ember.Component.extend({
   targetModifier: null,
   constraints: null,
   optimizations: null,
+  modules: null,
 
   didInsertElement() {
     this.addTether();
     this._super(...arguments);
+    let modules = this.get('modules');
+    if (modules) {
+      modules.forEach((module) => {
+        Tether.modules.push(module);
+      });
+    }
   },
 
   willDestroyElement() {

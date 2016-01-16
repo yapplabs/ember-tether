@@ -1,0 +1,11 @@
+.ember-tether-transition {  
+  /* 
+   * These rules are just here for information purposes.
+   * If you uncomment them the tests will fail.
+   */
+
+  /*
+   * transition: -webkit-transform 80ms ease-in-out;
+   * transition: transform 80ms ease-in-out;
+   */
+}

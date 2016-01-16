@@ -2,6 +2,7 @@ import Ember from 'ember';
 import QUnit from 'qunit';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
+import TestTransitionModule from 'dummy/modules/test-transition-module';
 
 let application, viewRegistry;
 const { assert } = QUnit;
@@ -124,5 +125,12 @@ test('surviving target removal', function(assert) {
     assert.rightOf('.third-tethered-thing', '#tether-target-2 .within');
     assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
     assert.ok(Ember.$('.third-tethered-thing .highlight').text() === 'true');
+  });
+});
+
+test('passing in tether modules', function(assert) {
+  visit('/');
+  andThen(function() {
+    assert.ok(window.Tether.modules.slice(-1)[0].className === TestTransitionModule.className);
   });
 });
