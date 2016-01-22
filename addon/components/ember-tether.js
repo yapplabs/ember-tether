@@ -28,6 +28,10 @@ export default Ember.Component.extend({
     this._super(...arguments);
   },
 
+  didRender() {
+    this._tether.position();
+  },
+
   tetherDidChange: observer(
     'classPrefix',
     'target',
