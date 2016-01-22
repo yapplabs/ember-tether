@@ -15,17 +15,22 @@ export default Ember.Component.extend({
   optimizations: null,
 
   didInsertElement() {
-    this.addTether();
     this._super(...arguments);
+    this.addTether();
   },
 
   willDestroyElement() {
+    this._super(...arguments);
     const { _tether, element } = this;
     run.schedule('render', () => {
       this.removeElement(element);
       this.removeTether(_tether);
     });
+  },
+
+  didRender() {
     this._super(...arguments);
+    this.positionTether();
   },
 
   tetherDidChange: observer(
@@ -43,6 +48,12 @@ export default Ember.Component.extend({
       this.addTether();
     }
   ),
+
+  positionTether() {
+    if (this._tether) {
+      this._tether.position();
+    }
+  },
 
   addTether() {
     if (get(this, '_tetherTarget')) {
