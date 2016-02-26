@@ -41,7 +41,9 @@
     "tether"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.0.0"
+    "ember-cli-babel": "^5.0.0",
+    "ember-cli-node-assets": "^0.1.1",
+    "tether": "^1.2.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
