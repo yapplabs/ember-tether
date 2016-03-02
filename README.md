@@ -66,24 +66,11 @@ and remove it when the route is exited.
 
 ## Using ember-tether in Your Own Addon
 
-ember-tether depends on [Hubspot Tether](http://github.hubspot.com/tether/), which is imported as a bower dependency. When using ember-tether directly in an Ember app, everything will work out of the box with no configuration
-necessary.
+ember-tether depends on [Hubspot Tether](http://github.hubspot.com/tether/), which is imported as a globals-style JS dependency. When using ember-tether directly in an Ember app, everything will work out of the box with no configuration necessary.
 
 However, addons nested in other addons do not have access to `app.import` in their included hook and are therefore unable to import their own dependencies. This is not a problem unique to ember-tether.
 
-The bad news is that this makes it more difficult to use ember-tether in an addon you may be developing. The good news is that ember-tether provides an `importBowerDependencies` hook for just this purpose.
-
-So... when using ember-tether nested within your addon, use the following code in the addon's `included` hook:
-
-```javascript
-included: function(app){
-  this._super.included.apply(this, app);
-  var emberTetherAddon = this.addons.filter(function(addon) {
-    return addon.name == 'ember-tether';
-  })[0];
-  emberTetherAddon.importBowerDependencies(app);
-},
-```
+The solution to this is to declare ember-tether as a `peerDependency` to ensure that it gets installed alongside your addon as a dependency of the root application. You'll likely also want it as a `devDependency` so that it's available during development and testing.
 
 ## Development Setup
 

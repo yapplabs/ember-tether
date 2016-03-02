@@ -4,13 +4,12 @@
 module.exports = {
   name: 'ember-tether',
 
-  included: function(app) {
-    if (app.import) {
-      this.importBowerDependencies(app);
+  options: {
+    nodeAssets: {
+      tether: {
+        srcDir: 'dist',
+        import: ['js/tether.js']
+      }
     }
-  },
-
-  importBowerDependencies: function(app) {
-    app.import(app.bowerDirectory + '/tether/dist/js/tether.js');
   }
 };
