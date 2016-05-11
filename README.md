@@ -64,6 +64,26 @@ Similarly, if you use `ember-tether` in a route's template, it will
 render its content next to the target element when the route is entered
 and remove it when the route is exited.
 
+## Acceptance Testing
+
+Hubspot Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your
+content outside of the Ember application `rootElement` during acceptance testing. This breaks event
+dispatch and action handling, including traditional Ember test helpers like `click`.
+
+In order to [short-circuit Hubspot's positioning behavior](https://github.com/HubSpot/tether/pull/98/), we must use static positioning on the
+`#ember-testing-container` div as follows:
+
+##### tests/index.html
+```html
+<style>
+  #ember-testing-container {
+    /* Set position static to short-circuit Hubspot Tether's positioning */
+    /* https://github.com/HubSpot/tether/pull/98/ */
+    position: static !important;
+  }
+</style>
+```
+
 ## Using ember-tether in Your Own Addon
 
 ember-tether depends on [Hubspot Tether](http://github.hubspot.com/tether/), which is imported as a globals-style JS dependency. When using ember-tether directly in an Ember app, everything will work out of the box with no configuration necessary.
