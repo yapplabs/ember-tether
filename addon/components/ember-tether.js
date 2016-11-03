@@ -22,10 +22,8 @@ export default Ember.Component.extend({
   willDestroyElement() {
     this._super(...arguments);
     const { _tether, element } = this;
-    run.schedule('render', () => {
-      this.removeElement(element);
-      this.removeTether(_tether);
-    });
+    this.removeTether(_tether);
+    this.moveElementBackIntoParent(element);
   },
 
   didRender() {
@@ -57,6 +55,12 @@ export default Ember.Component.extend({
 
   addTether() {
     if (get(this, '_tetherTarget')) {
+      // Tether moves our element in the DOM. This 
+      // causes Glimmer 2 to be very, very confused.
+      // So, we save the original parent which we'll
+      // append the element to after we remove tether in
+      // removeElement
+      this._originalParentNode = this.element.parentNode
       this._tether = new Tether(this._tetherOptions());
     }
   },
@@ -67,10 +71,14 @@ export default Ember.Component.extend({
     }
   },
 
-  removeElement(element) {
+  moveElementBackIntoParent(element) {
+    // Remove the element from the body
     if (element.parentNode) {
       element.parentNode.removeChild(element);
     }
+    // For Glimmer 2 to work properly, we need to 
+    // to readd the element to the original parent
+    this._originalParentNode.appendChild(element)
   },
 
   _tetherTarget: computed('target', function() {
