@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { observer, get, run, computed } = Ember;
+const { observer, get, computed } = Ember;
 
 export default Ember.Component.extend({
   classNames: ['ember-tether'],
@@ -76,7 +76,7 @@ export default Ember.Component.extend({
     if (element.parentNode) {
       element.parentNode.removeChild(element);
     }
-    // For Glimmer 2 to work properly, we need to 
+    // For Glimmer 2 to work properly, we need to
     // to readd the element to the original parent
     this._originalParentNode.appendChild(element);
   },
