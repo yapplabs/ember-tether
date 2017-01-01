@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-const { computed, get, set, observer, run } = Ember;
+const { computed, get, isNone, set, observer, run, Controller } = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   exampleTarget: 1,
   exampleTargetSelector: computed('exampleTarget', function() {
     return `#tether-target-${get(this, 'exampleTarget')}`;
@@ -25,13 +25,13 @@ export default Ember.Controller.extend({
   attachmentConfigurationIndex: 0,
 
   exampleTargetAttachment: computed('attachmentConfigurationIndex', function() {
-    const i = get(this, 'attachmentConfigurationIndex');
-    const config = get(this, 'attachmentConfigurations')[i];
+    let i = get(this, 'attachmentConfigurationIndex');
+    let config = get(this, 'attachmentConfigurations')[i];
     return config.targetAttachment;
   }),
   exampleAttachment: computed('attachmentConfigurationIndex', function() {
-    const i = get(this, 'attachmentConfigurationIndex');
-    const config = get(this, 'attachmentConfigurations')[i];
+    let i = get(this, 'attachmentConfigurationIndex');
+    let config = get(this, 'attachmentConfigurations')[i];
     return config.attachment;
   }),
 
@@ -64,25 +64,25 @@ export default Ember.Controller.extend({
       this.set('exampleTargetComponent', component);
     },
     switchTether() {
-      const dt = get(this, 'exampleTarget');
-      const nt = dt === 7 ? 1 : dt + 1;
+      let dt = get(this, 'exampleTarget');
+      let nt = dt === 7 ? 1 : dt + 1;
       set(this, 'exampleTarget', nt);
     },
     rotateTether() {
-      const numConfigs = get(this, 'attachmentConfigurations').length;
-      const i = get(this, 'attachmentConfigurationIndex');
-      const nc = i === (numConfigs - 1) ? 0 : i + 1;
+      let numConfigs = get(this, 'attachmentConfigurations').length;
+      let i = get(this, 'attachmentConfigurationIndex');
+      let nc = i === (numConfigs - 1) ? 0 : i + 1;
       set(this, 'attachmentConfigurationIndex', nc);
     },
     toggleOffset() {
-      if (Ember.isNone(get(this, 'exampleOffset'))) {
+      if (isNone(get(this, 'exampleOffset'))) {
         set(this, 'exampleOffset', '0 -20px');
       } else {
         set(this, 'exampleOffset', null);
       }
     },
     toggleConstraints() {
-      if (Ember.isNone(get(this, 'exampleConstraints'))) {
+      if (isNone(get(this, 'exampleConstraints'))) {
         set(this, 'exampleConstraints', [{
           to: 'scrollParent',
           attachment: 'together',

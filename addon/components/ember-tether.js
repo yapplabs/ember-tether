@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-const { observer, get, run, computed } = Ember;
+const { observer, get, getOwner, run, computed, isNone, Component } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['ember-tether'],
   classPrefix: 'ember-tether',
   target: null,
@@ -13,7 +13,15 @@ export default Ember.Component.extend({
   targetModifier: null,
   constraints: null,
   optimizations: null,
-
+  emberTetherConfig: computed(function() {
+    return getOwner(this).resolveRegistration('config:environment')['ember-tether'];
+  }),
+  bodyElement: computed(function() {
+    let config = get(this, 'emberTetherConfig');
+    if (config && config.bodyElementId) {
+      return document.getElementById(config.bodyElementId);
+    }
+  }),
   didInsertElement() {
     this._super(...arguments);
     this.addTether();
@@ -21,7 +29,7 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
-    const { _tether, element } = this;
+    let { _tether, element } = this;
     run.schedule('render', () => {
       this.removeElement(element);
       this.removeTether(_tether);
@@ -93,10 +101,11 @@ export default Ember.Component.extend({
       'targetOffset',
       'targetModifier',
       'constraints',
-      'optimizations'
+      'optimizations',
+      'bodyElement'
     ].forEach((k) => {
-      const v = get(this, k);
-      if (!Ember.isNone(v)) {
+      let v = get(this, k);
+      if (!isNone(v)) {
         options[k] = v;
       }
     });
