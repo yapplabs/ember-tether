@@ -1,10 +1,11 @@
 import Ember from 'ember';
+const { run, Component } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['example-component'],
 
   didInsertElement() {
-    Ember.run.schedule('afterRender', () => {
+    run.schedule('afterRender', () => {
       if (this.isDestroying || this.isDestroyed) {
         return;
       }
