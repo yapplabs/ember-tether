@@ -2,7 +2,7 @@
 
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
-ember-tether is currently tested in Ember 2.4 and higher. For support for earlier versions of Ember, use ember-tether 1.3.1.
+ember-tether is currently tested in Ember 2.4 and higher. For support for earlier versions of Ember, use ember-tether 0.3.1.
 
 ## Live Demo
 

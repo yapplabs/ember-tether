@@ -1,13 +1,37 @@
 # Change Log
 
-## [0.2.0](https://github.com/yapplabs/ember-tether/tree/0.2.0) (2015-11-02)
-[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.1.3...0.2.0)
+## [0.4.0](https://github.com/yapplabs/ember-tether/tree/0.4.0) (2016-12-31)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.3.1...0.4.0)
 
-**Closed issues:**
+**Merged pull requests:**
 
-- Remove unnecessary ember-wormhole dependency [\#12](https://github.com/yapplabs/ember-tether/issues/12)
-- Version of tether is outdated, updating caused build error [\#11](https://github.com/yapplabs/ember-tether/issues/11)
-- locate tether bottom left - top left [\#7](https://github.com/yapplabs/ember-tether/issues/7)
+- Update ember-cli, tether, and ember versions, and introduce bodyElementId option [\#39](https://github.com/yapplabs/ember-tether/pull/39) ([lukemelia](https://github.com/lukemelia))
+
+## [v0.3.1](https://github.com/yapplabs/ember-tether/tree/v0.3.1) (2016-05-11)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.3.0...v0.3.1)
+
+**Merged pull requests:**
+
+- Update Hubspot Tether for Sensible Acceptance Testing [\#31](https://github.com/yapplabs/ember-tether/pull/31) ([chrislopresto](https://github.com/chrislopresto))
+
+## [v0.3.0](https://github.com/yapplabs/ember-tether/tree/v0.3.0) (2016-03-02)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.2.1...v0.3.0)
+
+**Merged pull requests:**
+
+- Pull tether from npm instead of Bower [\#27](https://github.com/yapplabs/ember-tether/pull/27) ([dfreeman](https://github.com/dfreeman))
+
+## [v0.2.1](https://github.com/yapplabs/ember-tether/tree/v0.2.1) (2016-01-22)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.2.0...v0.2.1)
+
+**Merged pull requests:**
+
+- Call tether.position\(\) on didRender. [\#25](https://github.com/yapplabs/ember-tether/pull/25) ([chrislopresto](https://github.com/chrislopresto))
+- Add installation instructions to README [\#23](https://github.com/yapplabs/ember-tether/pull/23) ([chrislopresto](https://github.com/chrislopresto))
+- Updates ember-suave so we can run the tests. [\#20](https://github.com/yapplabs/ember-tether/pull/20) ([keppy](https://github.com/keppy))
+
+## [v0.2.0](https://github.com/yapplabs/ember-tether/tree/v0.2.0) (2015-11-02)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.1.3...v0.2.0)
 
 **Merged pull requests:**
 
