@@ -7,34 +7,43 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for 'head'}}
-    {{content-for 'test-head'}}
+    {{content-for "head"}}
+    {{content-for "test-head"}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/dummy.css">
-    <link rel="stylesheet" href="assets/test-support.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/dummy.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/test-support.css">
+
 
     <style>
+      body {
+        margin: 0;
+      }
       #ember-testing-container {
-        position: absolute;
-        background: rgba(255, 0, 255, 0.1);
-        bottom: 0;
-        right: 0;
-        width: initial;
-        height: initial;
-        overflow: auto;
-        z-index: 9999;
-        border: 10px solid lime;
+        width: 100%;
+        border: none;
       }
       #ember-testing {
-        zoom: 100%;
+        transform: none;
+        transform-origin: initial;
+        width: initial;
+        height: initial;
+      }
+      #qunit {
+        max-height: 50vh;
+        position:absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
       }
       .note {
-        font-size: 1.5rem;
-        margin: 5px auto;
+        position: absolute;
+        font-size: 1.3rem;
+        margin: 0 auto;
         background-color: cyan;
-        border: dotted 10px black;
-        padding: 10px 100px;
+        border: dotted 6px black;
+        padding: 10px 30px;
         width: 80%;
       }
       strong {
@@ -42,25 +51,32 @@
       }
     </style>
 
-    {{content-for 'head-footer'}}
-    {{content-for 'test-head-footer'}}
+    {{content-for "head-footer"}}
+    {{content-for "test-head-footer"}}
   </head>
   <body>
     <p class='note'>
       <strong>NOTE:</strong> We have freed the #ember-testing-container div from its usual bounds
-      and set the #ember-testing-container zoom to 100% in order to observe and
-      properly test Ember Tether's positioning behavior.
+      and disabled #ember-testing-container zoom in order to observe and properly test Ember
+      Tether's positioning behavior.
     </p>
 
-    {{content-for 'body'}}
-    {{content-for 'test-body'}}
-    <script src="assets/vendor.js"></script>
-    <script src="assets/test-support.js"></script>
-    <script src="assets/dummy.js"></script>
-    <script src="testem.js"></script>
-    <script src="assets/test-loader.js"></script>
+    {{content-for "body"}}
+    {{content-for "test-body"}}
 
-    {{content-for 'body-footer'}}
-    {{content-for 'test-body-footer'}}
+    <script src="/testem.js"></script>
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/test-support.js"></script>
+    <script src="{{rootURL}}assets/dummy.js"></script>
+    <script src="{{rootURL}}assets/tests.js"></script>
+
+    <script>
+      jQuery(document).ready(function() {
+        document.getElementById('ember-testing-container').style.position = 'static';
+      });
+    </script>
+
+    {{content-for "body-footer"}}
+    {{content-for "test-body-footer"}}
   </body>
 </html>

@@ -2,6 +2,8 @@
 
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
+ember-tether is currently tested in Ember 2.4 and higher. For support for earlier versions of Ember, use ember-tether 0.3.1.
+
 ## Live Demo
 
 View a live demo here: [http://yapplabs.github.io/ember-tether/](http://yapplabs.github.io/ember-tether/)
@@ -18,8 +20,6 @@ Given the following DOM:
 
 ```html
 <body class="ember-application">
-  <!-- Target must be in the same element as your ember app -->
-  <!-- otherwise events/bindings on the tethered content will not work -->
   <div id="a-nice-person">
     Nice person
   </div>
@@ -66,31 +66,19 @@ and remove it when the route is exited.
 
 ## Acceptance Testing
 
-Hubspot Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your
-content outside of the Ember application `rootElement` during acceptance testing. This breaks event
-dispatch and action handling, including traditional Ember test helpers like `click`.
+Hubspot Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your content outside of the Ember application `rootElement` during acceptance testing. This breaks event dispatch and action handling, including traditional Ember test helpers like `click`.
 
-In order to [short-circuit Hubspot's positioning behavior](https://github.com/HubSpot/tether/pull/98/), we must use static positioning on the
-`#ember-testing-container` div as follows:
+As of version 1.4.0, we can configure a different element to be used instead of body. This can be useful for Ember tests.
 
-##### tests/index.html
-```html
-<style>
-  #ember-testing-container {
-    /* Set position static to short-circuit Hubspot Tether's positioning */
-    /* https://github.com/HubSpot/tether/pull/98/ */
-    position: static !important;
-  }
-</style>
+```js
+// config/environment.js
+
+ENV['ember-tether'] = {
+  bodyElementId: 'ember-testing'
+};
 ```
 
-## Using ember-tether in Your Own Addon
-
-ember-tether depends on [Hubspot Tether](http://github.hubspot.com/tether/), which is imported as a globals-style JS dependency. When using ember-tether directly in an Ember app, everything will work out of the box with no configuration necessary.
-
-However, addons nested in other addons do not have access to `app.import` in their included hook and are therefore unable to import their own dependencies. This is not a problem unique to ember-tether.
-
-The solution to this is to declare ember-tether as a `peerDependency` to ensure that it gets installed alongside your addon as a dependency of the root application. You'll likely also want it as a `devDependency` so that it's available during development and testing.
+It is also possible to pass a `bodyElement` to a particular ember-tether component declaration.
 
 ## Development Setup
 
@@ -102,9 +90,13 @@ The solution to this is to declare ember-tether as a `peerDependency` to ensure 
 
 ### Running Tests
 
-* `ember try:testall`
 * `ember test`
-* `ember test --server`
+* `ember test --serve`
+
+This addon uses ember-try to test against multiple versions of Ember:
+
+* `ember try:each`
+* `ember try:one ember-release --- ember test --serve`
 
 ### Running the dummy app
 
