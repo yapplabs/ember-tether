@@ -29,13 +29,14 @@
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^3.0.4",
     "ember-cli-release": "^0.2.9",
+    "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-getowner-polyfill": "1.2.2",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.1.1",
     "ember-suave": "4.0.1",
-    "ember-cli-test-loader": "^1.1.0",
     "loader.js": "^4.0.10"
   },
   "keywords": [
