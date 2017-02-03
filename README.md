@@ -2,7 +2,7 @@
 
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
-ember-tether is currently tested in Ember 2.4 and higher. For support for earlier versions of Ember, use ember-tether 0.3.1.
+ember-tether is currently tested in Ember 1.13 and higher. For support for earlier versions of Ember, use ember-tether 0.3.1.
 
 ## Live Demo
 
@@ -68,7 +68,7 @@ and remove it when the route is exited.
 
 Hubspot Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your content outside of the Ember application `rootElement` during acceptance testing. This breaks event dispatch and action handling, including traditional Ember test helpers like `click`.
 
-As of version 1.4.0, we can configure a different element to be used instead of body. This can be useful for Ember tests.
+As of version 0.4.0, we can configure a different element to be used instead of body. This can be useful for Ember tests.
 
 ```js
 // config/environment.js
