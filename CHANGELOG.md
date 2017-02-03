@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.4.0](https://github.com/yapplabs/ember-tether/tree/0.4.0) (2016-12-31)
-[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.3.1...0.4.0)
+## [v0.4.1](https://github.com/yapplabs/ember-tether/tree/v0.4.1) (2017-02-02)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.4.0...v0.4.1)
+
+**Merged pull requests:**
+
+- add a polyfill for Ember.getOwner [\#41](https://github.com/yapplabs/ember-tether/pull/41) ([humanchimp](https://github.com/humanchimp))
+
+## [v0.4.0](https://github.com/yapplabs/ember-tether/tree/v0.4.0) (2017-01-01)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.3.1...v0.4.0)
 
 **Merged pull requests:**
 

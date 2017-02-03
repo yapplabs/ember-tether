@@ -1,6 +1,6 @@
 {
   "name": "ember-tether",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Tether an element to another element in the DOM",
   "directories": {
     "doc": "doc",
