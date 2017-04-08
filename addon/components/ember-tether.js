@@ -14,7 +14,7 @@ export default Component.extend({
   constraints: null,
   optimizations: null,
   emberTetherConfig: computed(function() {
-    return getOwner(this).resolveRegistration('config:environment')['ember-tether'];
+    return (getOwner(this).resolveRegistration('config:environment') || {})['ember-tether'];
   }),
   bodyElement: computed(function() {
     let config = get(this, 'emberTetherConfig');
