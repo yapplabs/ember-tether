@@ -1,5 +1,3 @@
-// jscs:disable disallowDirectPropertyAccess
-
 import Ember from 'ember';
 import config from './config/environment';
 
