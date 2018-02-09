@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.0-beta.1](https://github.com/yapplabs/ember-tether/tree/1.0.0-beta.1) (2018-02-09)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.0...1.0.0-beta.1)
+
+**Merged pull requests:**
+
+- upgrades ember-cli-babel \(and other packages\) [\#46](https://github.com/yapplabs/ember-tether/pull/46) ([NLincoln](https://github.com/NLincoln))
+
 ## [v1.0.0-beta.0](https://github.com/yapplabs/ember-tether/tree/v1.0.0-beta.0) (2017-04-11)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.4.1...v1.0.0-beta.0)
 
@@ -25,14 +32,6 @@
 ## [v0.3.1](https://github.com/yapplabs/ember-tether/tree/v0.3.1) (2016-05-11)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.3.0...v0.3.1)
 
-**Closed issues:**
-
-- child component setting on destroy [\#30](https://github.com/yapplabs/ember-tether/issues/30)
-- Latest release doesn't match package.json [\#28](https://github.com/yapplabs/ember-tether/issues/28)
-- Is there a way to make tooltip position dynamically based on the screen view? [\#26](https://github.com/yapplabs/ember-tether/issues/26)
-- Acceptance Tests fail  [\#18](https://github.com/yapplabs/ember-tether/issues/18)
-- Actions blocked from inside tether when rootElement is modified. [\#3](https://github.com/yapplabs/ember-tether/issues/3)
-
 **Merged pull requests:**
 
 - Update Hubspot Tether for Sensible Acceptance Testing [\#31](https://github.com/yapplabs/ember-tether/pull/31) ([chrislopresto](https://github.com/chrislopresto))
@@ -40,21 +39,12 @@
 ## [v0.3.0](https://github.com/yapplabs/ember-tether/tree/v0.3.0) (2016-03-02)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.2.1...v0.3.0)
 
-**Closed issues:**
-
-- Liquid Fire/Ember Wormhole integration [\#8](https://github.com/yapplabs/ember-tether/issues/8)
-
 **Merged pull requests:**
 
 - Pull tether from npm instead of Bower [\#27](https://github.com/yapplabs/ember-tether/pull/27) ([dfreeman](https://github.com/dfreeman))
 
 ## [v0.2.1](https://github.com/yapplabs/ember-tether/tree/v0.2.1) (2016-01-22)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.2.0...v0.2.1)
-
-**Closed issues:**
-
-- Fails to build in an app - bower/ ... /tether.js missing [\#21](https://github.com/yapplabs/ember-tether/issues/21)
-- Tether loaded in incorrect place in 2.0.0-canary [\#6](https://github.com/yapplabs/ember-tether/issues/6)
 
 **Merged pull requests:**
 
@@ -64,12 +54,6 @@
 
 ## [v0.2.0](https://github.com/yapplabs/ember-tether/tree/v0.2.0) (2015-11-02)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v0.1.3...v0.2.0)
-
-**Closed issues:**
-
-- Remove unnecessary ember-wormhole dependency [\#12](https://github.com/yapplabs/ember-tether/issues/12)
-- Version of tether is outdated, updating caused build error [\#11](https://github.com/yapplabs/ember-tether/issues/11)
-- locate tether bottom left - top left [\#7](https://github.com/yapplabs/ember-tether/issues/7)
 
 **Merged pull requests:**
 
