@@ -29,6 +29,8 @@ export default Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
+    if (!this._tether) return;
+
     let { _tether, element } = this;
     run.schedule('render', () => {
       this.removeElement(element);
