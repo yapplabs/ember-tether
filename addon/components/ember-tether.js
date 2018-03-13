@@ -22,6 +22,27 @@ export default Component.extend({
       return document.getElementById(config.bodyElementId);
     }
   }),
+  attributeBindings: [
+    'aria-atomic',
+    'aria-busy',
+    'aria-controls',
+    'aria-current',
+    'aria-describedby',
+    'aria-details',
+    'aria-disabled',
+    'aria-errormessage',
+    'aria-flowto',
+    'aria-haspopup',
+    'aria-hidden',
+    'aria-invalid',
+    'aria-keyshortcuts',
+    'aria-label',
+    'aria-labelledby',
+    'aria-live',
+    'aria-owns',
+    'aria-relevant',
+    'aria-roledescription'
+  ],
   didInsertElement() {
     this._super(...arguments);
     this.addTether();

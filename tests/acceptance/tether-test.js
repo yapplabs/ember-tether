@@ -43,6 +43,11 @@ assert.classAbsent = function(thingSelector, className) {
   assert.ok(thing.attr('class').indexOf(className) <= -1);
 };
 
+assert.attribute = function(thingSelector, attributeName, attributeValue) {
+  let thing = $(thingSelector);
+  assert.equal(thing.attr(attributeName), attributeValue, `${attributeName} has value ${attributeValue}`);
+}
+
 function getTetherComponent(selector) {
   // jscs:disable
   let anotherEl = $(selector)[0];
@@ -114,5 +119,37 @@ test('surviving target removal', function(assert) {
     assert.rightOf('.third-tethered-thing', '#tether-target-2 .within');
     assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
     assert.ok($('.third-tethered-thing .highlight').text() === 'true');
+  });
+});
+
+test('binding accessibility elements', function(assert) {
+  visit('/');
+
+  let expectedAttributes = {
+    'aria-atomic': 'true',
+    'aria-busy': 'true',
+    'aria-controls': 'element-id',
+    'aria-current': 'current-element-id',
+    'aria-describedby': 'described-element-id',
+    'aria-details': 'details-element-id',
+    'aria-disabled': 'true',
+    'aria-errormessage': 'errormessage-element-id',
+    'aria-flowto': 'flowto-elemenet-id',
+    'aria-haspopup': 'grid',
+    'aria-hidden': 'true',
+    'aria-invalid': 'true',
+    'aria-keyshortcuts': 'A',
+    'aria-label': 'tether-label',
+    'aria-labelledby': 'labelledby-element-id',
+    'aria-live': 'polite',
+    'aria-owns': 'owns-element-id',
+    'aria-relevant': 'additions',
+    'aria-roledescription': 'tether-role-description'
+  };
+  andThen(function() {
+    assert.attribute('.accessible-thing', 'role', 'region');
+    Object.keys(expectedAttributes).forEach((attributeName) => {
+      assert.attribute('.accessible-thing', attributeName, expectedAttributes[attributeName]);
+    })
   });
 });
