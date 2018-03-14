@@ -1,7 +1,14 @@
 # Change Log
 
-## [1.0.0-beta.1](https://github.com/yapplabs/ember-tether/tree/1.0.0-beta.1) (2018-02-09)
-[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.0...1.0.0-beta.1)
+## [1.0.0-beta.2](https://github.com/yapplabs/ember-tether/tree/1.0.0-beta.2) (2018-03-13)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.1...1.0.0-beta.2)
+
+**Merged pull requests:**
+
+- Add global aria attribute bindings [\#51](https://github.com/yapplabs/ember-tether/pull/51) ([eshtadc](https://github.com/eshtadc))
+
+## [v1.0.0-beta.1](https://github.com/yapplabs/ember-tether/tree/v1.0.0-beta.1) (2018-02-09)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.0...v1.0.0-beta.1)
 
 **Merged pull requests:**
 
