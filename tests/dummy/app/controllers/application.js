@@ -1,6 +1,7 @@
-import Ember from 'ember';
-
-const { computed, get, isNone, set, observer, run, Controller } = Ember;
+import { isNone } from '@ember/utils';
+import { observer, set, get, computed } from '@ember/object';
+import { run } from '@ember/runloop';
+import Controller from '@ember/controller';
 
 export default Controller.extend({
   exampleTarget: 1,
@@ -8,6 +9,7 @@ export default Controller.extend({
     return `#tether-target-${get(this, 'exampleTarget')}`;
   }),
 
+  // eslint-disable-next-line
   attachmentConfigurations: [
     { targetAttachment: 'top left', attachment: 'top right' },
     { targetAttachment: 'middle left', attachment: 'top right' },

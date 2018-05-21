@@ -1,6 +1,8 @@
-import Ember from 'ember';
-
-const { observer, get, getOwner, run, computed, isNone, Component } = Ember;
+import { getOwner } from '@ember/application';
+import { run } from '@ember/runloop';
+import { computed, get, observer } from '@ember/object';
+import { isNone } from '@ember/utils';
+import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['ember-tether'],

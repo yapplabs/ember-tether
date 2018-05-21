@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import set from 'ember-metal/set';
+import $ from 'jquery';
+import { set } from '@ember/object';
 import QUnit from 'qunit';
 import { test } from 'qunit';
 import moduleForAcceptance from 'dummy/tests/helpers/module-for-acceptance';
@@ -7,13 +7,8 @@ import moduleForAcceptance from 'dummy/tests/helpers/module-for-acceptance';
 let viewRegistry;
 const { assert } = QUnit;
 const { abs } = Math;
-const { $ } = Ember;
 
-moduleForAcceptance('Acceptance | tether test', {
-  beforeEach() {
-    viewRegistry = this.application.__container__.lookup('-view-registry:main');
-  }
-});
+moduleForAcceptance('Acceptance | tether test');
 
 assert.topAligned = function(thingSelector, targetSelector) {
   let thing = $(thingSelector);
@@ -48,10 +43,11 @@ assert.attribute = function(thingSelector, attributeName, attributeValue) {
   assert.equal(thing.attr(attributeName), attributeValue, `${attributeName} has value ${attributeValue}`);
 }
 
-function getTetherComponent(selector) {
+function getTetherComponent(context, selector) {
   // jscs:disable
   let anotherEl = $(selector)[0];
   // jscs:enable
+  viewRegistry = context.application.__container__.lookup('-view-registry:main');
   return viewRegistry[anotherEl.id];
 }
 
@@ -83,8 +79,8 @@ test('changing tether attachment', function(assert) {
     assert.leftOf('.another-tethered-thing', '#tether-target-3');
   });
 
-  andThen(function() {
-    let anotherThing = getTetherComponent('.another-tethered-thing');
+  andThen(() => {
+    let anotherThing = getTetherComponent(this, '.another-tethered-thing');
     set(anotherThing, 'attachment', 'top left');
     set(anotherThing, 'targetAttachment', 'top right');
   });

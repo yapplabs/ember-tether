@@ -1,5 +1,5 @@
-import Ember from 'ember';
-const { run, Component } = Ember;
+import { run } from '@ember/runloop';
+import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['example-component'],
@@ -9,6 +9,7 @@ export default Component.extend({
       if (this.isDestroying || this.isDestroyed) {
         return;
       }
+      // eslint-disable-next-line
       this.sendAction('registerComponentTarget', this);
     });
   }
