@@ -4,6 +4,7 @@ import { set } from '@ember/object';
 import { module, test } from 'qunit';
 import QUnit from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import { run } from '@ember/runloop';
 
 let viewRegistry;
 const { assert } = QUnit;
@@ -70,15 +71,19 @@ module('Acceptance | tether test', function(hooks) {
   });
 
   test('changing tether attachment', async function(assert) {
+    assert.expect(4);
     await visit('/');
 
     assert.topAligned('.another-tethered-thing', '#tether-target-3');
     assert.leftOf('.another-tethered-thing', '#tether-target-3');
     let anotherThing = getTetherComponent(this, '.another-tethered-thing');
-    set(anotherThing, 'attachment', 'top left');
-    set(anotherThing, 'targetAttachment', 'top right');
-    assert.topAligned('.another-tethered-thing', '#tether-target-3');
-    assert.rightOf('.another-tethered-thing', '#tether-target-3');
+    //wrap this in a run to fix failing test in ember-lts-2.12
+    await run(() => {
+      set(anotherThing, 'attachment', 'top left');
+      set(anotherThing, 'targetAttachment', 'top right');
+      assert.topAligned('.another-tethered-thing', '#tether-target-3');
+      assert.rightOf('.another-tethered-thing', '#tether-target-3');
+    });
   });
 
   test('surviving target removal', async function(assert) {
