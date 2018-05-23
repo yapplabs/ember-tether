@@ -80,27 +80,35 @@ ENV['ember-tether'] = {
 
 It is also possible to pass a `bodyElement` to a particular ember-tether component declaration.
 
-## Development Setup
+## Contributing
 
 ### Installation
 
-* `git clone` this repository
-* `yarn install`
+* `git clone <repository-url>`
+* `cd my-addon`
+* `npm install`
+`
 
-### Running Tests
+### Linting
 
-* `ember test`
-* `ember test --serve`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
+
+### Running tests
+
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
 This addon uses ember-try to test against multiple versions of Ember:
 
 * `ember try:each`
 * `ember try:one ember-release --- ember test --serve`
 
-### Running the dummy app
+### Running the dummy application
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 

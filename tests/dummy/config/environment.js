@@ -1,7 +1,7 @@
-/* jshint node: true */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'dummy',
     environment,
     rootURL: '/',
@@ -45,10 +45,11 @@ module.exports = function(environment) {
     ENV['ember-tether'] = {
       bodyElementId: 'ember-testing'
     };
+    ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {
-
+    // here you can enable a production-specific feature
   }
 
   return ENV;
