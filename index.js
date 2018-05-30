@@ -3,12 +3,8 @@
 module.exports = {
   name: 'ember-tether',
 
-  options: {
-    nodeAssets: {
-      tether: {
-        srcDir: 'dist',
-        import: ['js/tether.js']
-      }
-    }
-  }
+  included: function() {
+    this._super.included.apply(this, arguments);
+    this.import('node_modules/tether/dist/js/tether.js');
+  },
 };
