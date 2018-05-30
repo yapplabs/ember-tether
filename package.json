@@ -22,7 +22,6 @@
   "repository": "https://github.com/yapplabs/ember-tether.git",
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
-    "ember-cli-node-assets": "^0.2.2",
     "tether": "^1.4.0"
   },
   "devDependencies": {
