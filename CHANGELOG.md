@@ -1,7 +1,14 @@
 # Change Log
 
-## [1.0.0-beta.3](https://github.com/yapplabs/ember-tether/tree/1.0.0-beta.3) (2018-05-23)
-[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.1...1.0.0-beta.3)
+## [1.0.0](https://github.com/yapplabs/ember-tether/tree/1.0.0) (2018-06-10)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.3...1.0.0)
+
+**Merged pull requests:**
+
+- Fix error on willDestroyElement when running in fastboot [\#53](https://github.com/yapplabs/ember-tether/pull/53) ([josemarluedke](https://github.com/josemarluedke))
+
+## [v1.0.0-beta.3](https://github.com/yapplabs/ember-tether/tree/v1.0.0-beta.3) (2018-05-23)
+[Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.1...v1.0.0-beta.3)
 
 **Merged pull requests:**
 
