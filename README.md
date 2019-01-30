@@ -2,7 +2,17 @@
 
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
-ember-tether is currently tested in Ember 2.4 and higher. For Ember 1.13 - 2.3, use 0.4.1. For support for earlier versions of Ember, use ember-tether 0.3.1.
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.4 or above
+* Ember CLI v2.13 or above
+
+For Ember 1.13 - 2.3, use 0.4.1. For support for earlier versions of Ember, use ember-tether 0.3.1.
+
+Installation
+------------------------------------------------------------------------------
 
 ## Live Demo
 
@@ -80,43 +90,8 @@ ENV['ember-tether'] = {
 
 It is also possible to pass a `bodyElement` to a particular ember-tether component declaration.
 
-## Contributing
-
-### Installation
-
-* `git clone <repository-url>`
-* `cd my-addon`
-* `npm install`
-`
-
-### Linting
-
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Running tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-This addon uses ember-try to test against multiple versions of Ember:
-
-* `ember try:each`
-* `ember try:one ember-release --- ember test --serve`
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
-
-## Generating the Changelog
-
-This project uses [https://github.com/skywinder/github-changelog-generator](https://github.com/skywinder/github-changelog-generator) to generate its changelog.
-
-## Credits
+License
+------------------------------------------------------------------------------
 
 - [Hubspot Tether](http://github.hubspot.com/tether/), the underlying library that implement the actual tethering behavior
 - [ember-wormhole](https://github.com/yapplabs/ember-wormhole), whose pattern for element content manipulation inspired the approach in ember-tether
