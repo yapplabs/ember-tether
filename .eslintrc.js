@@ -14,9 +14,6 @@ module.exports = {
   env: {
     'browser': true
   },
-  globals: {
-    'Tether': false
-  },
   rules: {
   },
   overrides: [
