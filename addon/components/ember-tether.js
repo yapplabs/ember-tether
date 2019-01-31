@@ -3,6 +3,7 @@ import { run } from '@ember/runloop';
 import { computed, get, observer } from '@ember/object';
 import { isNone } from '@ember/utils';
 import Component from '@ember/component';
+import Tether from 'tether';
 
 export default Component.extend({
   classNames: ['ember-tether'],
