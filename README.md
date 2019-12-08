@@ -76,7 +76,7 @@ and remove it when the route is exited.
 
 ## Acceptance Testing
 
-Hubspot Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your content outside of the Ember application `rootElement` during acceptance testing. This breaks event dispatch and action handling, including traditional Ember test helpers like `click`.
+Tether works by appending tethered elements to the `<body>` tag. Unfortunately, this moves your content outside of the Ember application `rootElement` during acceptance testing. This breaks event dispatch and action handling, including traditional Ember test helpers like `click`.
 
 As of version 0.4.0, we can configure a different element to be used instead of body. This can be useful for Ember tests.
 
@@ -93,6 +93,6 @@ It is also possible to pass a `bodyElement` to a particular ember-tether compone
 License
 ------------------------------------------------------------------------------
 
-- [Hubspot Tether](http://github.hubspot.com/tether/), the underlying library that implement the actual tethering behavior
+- [Ship Shape Tether](https://github.com/shipshapecode/tether), the underlying library that implement the actual tethering behavior
 - [ember-wormhole](https://github.com/yapplabs/ember-wormhole), whose pattern for element content manipulation inspired the approach in ember-tether
 - [Tetherball](http://en.wikipedia.org/wiki/Tetherball), for providing countless hours of entertainment over the past century
