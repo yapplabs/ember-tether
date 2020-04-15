@@ -1,5 +1,24 @@
 # Change Log
 
+## v2.0.0 (2020-04-15)
+
+#### :boom: Breaking Change
+* [#71](https://github.com/yapplabs/ember-tether/pull/71) Drop support for Node.js 6 and 8 ([@Turbo87](https://github.com/Turbo87))
+* [#59](https://github.com/yapplabs/ember-tether/pull/59) Update Ember CLI to v3.7.1, drops node 4 support ([@jrjohnson](https://github.com/jrjohnson))
+
+#### :memo: Documentation
+* [#68](https://github.com/yapplabs/ember-tether/pull/68) Update README with Tether maintainers and link ([@chuckcarpenter](https://github.com/chuckcarpenter))
+
+#### :house: Internal
+* [#60](https://github.com/yapplabs/ember-tether/pull/60) Update ember-cli-github-pages ([@jrjohnson](https://github.com/jrjohnson))
+* [#58](https://github.com/yapplabs/ember-tether/pull/58) Import tether automatically ([@jrjohnson](https://github.com/jrjohnson))
+
+#### Committers: 3
+- Chuck Carpenter ([@chuckcarpenter](https://github.com/chuckcarpenter))
+- Jonathan Johnson ([@jrjohnson](https://github.com/jrjohnson))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## [1.0.0](https://github.com/yapplabs/ember-tether/tree/1.0.0) (2018-06-10)
 [Full Changelog](https://github.com/yapplabs/ember-tether/compare/v1.0.0-beta.3...1.0.0)
 
