@@ -1,6 +1,6 @@
 {
   "name": "ember-tether",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tether an element to another element in the DOM",
   "keywords": [
     "ember-addon",

@@ -1,5 +1,17 @@
 # Change Log
 
+
+## v2.0.1 (2021-09-09)
+
+#### :house: Internal
+* [#95](https://github.com/yapplabs/ember-tether/pull/95) Setup release-it ([@lukemelia](https://github.com/lukemelia))
+* [#72](https://github.com/yapplabs/ember-tether/pull/72) Adjust `.npmignore` file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 3
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+- Robert Wagner ([@rwwagner90](https://github.com/rwwagner90))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v2.0.0 (2020-04-15)
 
 #### :boom: Breaking Change
