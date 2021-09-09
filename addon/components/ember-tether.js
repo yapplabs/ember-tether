@@ -1,5 +1,5 @@
 import { getOwner } from '@ember/application';
-import { run } from '@ember/runloop';
+import { schedule } from '@ember/runloop';
 import { computed, get, observer } from '@ember/object';
 import { isNone } from '@ember/utils';
 import Component from '@ember/component';
@@ -56,7 +56,7 @@ export default Component.extend({
     if (!this._tether) return;
 
     let { _tether, element } = this;
-    run.schedule('render', () => {
+    schedule('render', () => {
       this.removeElement(element);
       this.removeTether(_tether);
     });
