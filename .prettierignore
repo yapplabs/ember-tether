@@ -1,21 +1,20 @@
+# unconventional js
+/blueprints/*/files/
+/vendor/
+
 # compiled output
 /dist/
 /tmp/
-*.tgz
 
 # dependencies
 /bower_components/
+/node_modules/
 
 # misc
-.*
-/bower.json
-/CONTRIBUTING.md
-/ember-cli-build.js
-/testem.js
-/tests/
-/yarn-error.log
-/yarn.lock
-.gitkeep
+/coverage/
+!.*
+.eslintcache
+.lint-todo/
 
 # ember-try
 /.node_modules.ember-try/

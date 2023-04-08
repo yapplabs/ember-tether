@@ -3,16 +3,15 @@
 This ember-cli addon provides a component that allows for 'tethering' a block to a target somewhere else on the page. The target may be an element, an element selector, or an Ember view. Importantly, the component retains typical context for Ember action handling and data binding.
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
-* Ember.js v2.4 or above
-* Ember CLI v2.13 or above
+* Ember.js v4.4 or above
+* Ember CLI v4.4 or above
+* Node.js v14 or above
 
 For Ember 1.13 - 2.3, use 0.4.1. For support for earlier versions of Ember, use ember-tether 0.3.1.
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ## Live Demo
 
@@ -90,8 +89,12 @@ ENV['ember-tether'] = {
 
 It is also possible to pass a `bodyElement` to a particular ember-tether component declaration.
 
-License
-------------------------------------------------------------------------------
+## Contributing
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
+## License
 
 - [Ship Shape Tether](https://github.com/shipshapecode/tether), the underlying library that implement the actual tethering behavior
 - [ember-wormhole](https://github.com/yapplabs/ember-wormhole), whose pattern for element content manipulation inspired the approach in ember-tether
