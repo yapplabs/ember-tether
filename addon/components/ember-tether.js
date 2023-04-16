@@ -1,126 +1,89 @@
 import { getOwner } from '@ember/application';
 import { schedule } from '@ember/runloop';
-import { computed, get, observer } from '@ember/object';
 import { isNone } from '@ember/utils';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import Tether from 'tether';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  classNames: ['ember-tether'],
-  classPrefix: 'ember-tether',
-  target: null,
-  attachment: null,
-  targetAttachment: null,
-  offset: null,
-  targetOffset: null,
-  targetModifier: null,
-  constraints: null,
-  optimizations: null,
-  emberTetherConfig: computed(function() {
-    return (getOwner(this).resolveRegistration('config:environment') || {})['ember-tether'];
-  }),
-  bodyElement: computed(function() {
-    let config = get(this, 'emberTetherConfig');
+export default class EmberTetherComponent extends Component {
+  _tether;
+  element;
+
+  get classPrefix() {
+    return this.args.classPrefix || 'ember-tether';
+  }
+
+  get emberTetherConfig() {
+    return (getOwner(this).resolveRegistration('config:environment') || {})[
+      'ember-tether'
+    ];
+  }
+
+  get bodyElement() {
+    let config = this.emberTetherConfig;
     if (config && config.bodyElementId) {
       return document.getElementById(config.bodyElementId);
     }
-  }),
-  attributeBindings: [
-    'aria-atomic',
-    'aria-busy',
-    'aria-controls',
-    'aria-current',
-    'aria-describedby',
-    'aria-details',
-    'aria-disabled',
-    'aria-errormessage',
-    'aria-flowto',
-    'aria-haspopup',
-    'aria-hidden',
-    'aria-invalid',
-    'aria-keyshortcuts',
-    'aria-label',
-    'aria-labelledby',
-    'aria-live',
-    'aria-owns',
-    'aria-relevant',
-    'aria-roledescription'
-  ],
-  didInsertElement() {
-    this._super(...arguments);
-    this.addTether();
-  },
+    return undefined;
+  }
 
-  willDestroyElement() {
-    this._super(...arguments);
+  willDestroy() {
+    super.willDestroy(...arguments);
     if (!this._tether) return;
-
     let { _tether, element } = this;
     schedule('render', () => {
       this.removeElement(element);
       this.removeTether(_tether);
     });
-  },
+  }
 
-  didRender() {
-    this._super(...arguments);
-    this.positionTether();
-  },
+  @action updateTether() {
+    this.removeTether(this._tether);
+    this.addTether();
+  }
 
-  tetherDidChange: observer(
-    'classPrefix',
-    'target',
-    'attachment',
-    'targetAttachment',
-    'offset',
-    'targetOffset',
-    'targetModifier',
-    'constraints',
-    'optimizations',
-    function() {
-      this.removeTether(this._tether);
-      this.addTether();
-    }
-  ),
-
+  @action
   positionTether() {
-    if (this._tether) {
-      this._tether.position();
-    }
-  },
+    this._tether?.position();
+  }
 
-  addTether() {
-    if (get(this, '_tetherTarget')) {
-      this._tether = new Tether(this._tetherOptions());
+  @action
+  addTether(el = null) {
+    // when called from did-insert modifier, el will be passed
+    if (el) {
+      this.element = el;
     }
-  },
-
+    if (this._tetherTarget) {
+      this._tether = new Tether(this._tetherOptions);
+      this.positionTether();
+    }
+  }
   removeTether(tether) {
-    if (tether) {
-      tether.destroy();
-    }
-  },
+    tether?.destroy();
+  }
 
   removeElement(element) {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
-    }
-  },
+    element.parentNode?.removeChild(element);
+  }
 
-  _tetherTarget: computed('target', function() {
-    let t = get(this, 'target');
+  get _tetherTarget() {
+    let t = this.args.target;
     if (t && t.element) {
       t = t.element;
     }
     return t;
-  }),
+  }
 
-  _tetherOptions() {
+  get _tetherOptions() {
     let options = {
       element: this.element,
-      target: get(this, '_tetherTarget')
+      target: this._tetherTarget,
+      classPrefix: this.classPrefix,
     };
-    [ 'classPrefix',
+    if (this.bodyElement) {
+      options.bodyElement = this.bodyElement;
+    }
+    [
       'attachment',
       'targetAttachment',
       'offset',
@@ -128,13 +91,12 @@ export default Component.extend({
       'targetModifier',
       'constraints',
       'optimizations',
-      'bodyElement'
     ].forEach((k) => {
-      let v = get(this, k);
+      let v = this.args[k];
       if (!isNone(v)) {
         options[k] = v;
       }
     });
     return options;
   }
-});
+}

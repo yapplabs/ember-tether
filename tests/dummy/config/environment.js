@@ -39,7 +39,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing';
 
     ENV['ember-tether'] = {
-      bodyElementId: 'ember-testing'
+      bodyElementId: 'ember-testing',
     };
     ENV.APP.autoboot = false;
   }

@@ -21,6 +21,8 @@
       #ember-testing-container {
         width: 100%;
         border: none;
+        height: 50vh;
+        overflow-y: scroll;
       }
       #ember-testing {
         transform: none;
@@ -36,14 +38,23 @@
         right: 0;
         z-index: 10000;
       }
+      #qunit-fixture {
+        position: absolute;
+        left: auto;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        top: auto;
+      }
       .note {
         position: absolute;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         margin: 0 auto;
         background-color: cyan;
         border: dotted 6px black;
-        padding: 10px 30px;
-        width: 80%;
+        padding: 10px 25px;
+        width: 90%;
+        bottom: 50vh;
       }
       strong {
         color: white;
