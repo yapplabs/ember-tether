@@ -1,6 +1,18 @@
 # Change Log
 
 
+
+## v3.0.0-0 (2023-04-19)
+
+#### :boom: Breaking Change
+* [#111](https://github.com/yapplabs/ember-tether/pull/111) Ember 4.12 compatibility ([@lukemelia](https://github.com/lukemelia))
+
+#### :rocket: Enhancement
+* [#111](https://github.com/yapplabs/ember-tether/pull/111) Ember 4.12 compatibility ([@lukemelia](https://github.com/lukemelia))
+
+#### Committers: 1
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+
 ## v2.0.1 (2021-09-09)
 
 #### :house: Internal
