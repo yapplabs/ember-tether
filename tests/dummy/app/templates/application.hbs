@@ -1,3 +1,5 @@
+{{page-title "Ember Tether"}}
+
 <h2 id="title">Ember Tether</h2>
 <p>
   Ember Tether is throwing an 80s party, in honor of what was arguably
@@ -7,41 +9,41 @@
 </p>
 
 <div class="demo">
-  <button {{action "switchTether"}}>Switch Tether</button>
+  <button {{on 'click' this.switchTether}} type="button">Switch Tether</button>
   Switch the target for "A tethered thing".
-  Target is square <span class="highlight">{{exampleTarget}}</span>
+  Target is square <span class="highlight">{{this.exampleTarget}}</span>
 </div>
 <div class="demo">
-  <button {{action "rotateTether"}}>Rotate Tether</button>
+  <button {{on 'click' this.rotateTether}} type="button">Rotate Tether</button>
   Rotate "Another tethered thing" around square 3.
-  attachment: <span class="highlight">{{exampleAttachment}}</span>
-  targetAttachment: <span class="highlight">{{exampleTargetAttachment}}</span>
+  attachment: <span class="highlight">{{this.exampleAttachment}}</span>
+  targetAttachment: <span class="highlight">{{this.exampleTargetAttachment}}</span>
 </div>
 <div class="demo">
-  <button {{action "toggleOffset"}}>Toggle Offset</button>
+  <button {{on 'click' this.toggleOffset}} type="button">Toggle Offset</button>
   Add spacing between "A tethered thing" and its target square.
-  Offset is <span class="highlight">{{if exampleOffset exampleOffset "null"}}</span>
+  Offset is <span class="highlight">{{if this.exampleOffset this.exampleOffset "null"}}</span>
 </div>
 <div class="demo">
-  <button {{action "toggleConstraints"}}>Toggle Constraints</button>
+  <button {{on 'click' this.toggleConstraints}} type="button">Toggle Constraints</button>
   Trap "Another tethered thing" within the box. Scroll to see it pin.
-  Constraints are <span class="highlight">{{exampleConstraintsOn}}</span>
+  Constraints are <span class="highlight">{{this.exampleConstraintsOn}}</span>
 </div>
 <div class="demo">
-  <button {{action "toggleTargetWithin"}}>Toggle Target</button>
+  <button {{on 'click' this.toggleTargetWithin}} type="button">Toggle Target</button>
   Remove target from DOM. Watch "A third tethered thing" behave sensibly.
-  Target in DOM: <span class="highlight">{{isShowingTargetWithin}}</span>
+  Target in DOM: <span class="highlight">{{this.isShowingTargetWithin}}</span>
 </div>
 
 
 <div class="scroll-box">
   <div id="tether-target-1" class="tether-target">
     1
-    {{example-component registerComponentTarget="registerComponentTarget"}}
+    <ExampleComponent @registerComponentTarget={{this.registerComponentTarget}} />
   </div>
   <div id="tether-target-2" class="tether-target">
     2
-    {{#if isShowingTargetWithin}}
+    {{#if this.isShowingTargetWithin}}
       <div class="within"></div>
     {{/if}}
   </div>
@@ -51,75 +53,71 @@
   <div id="tether-target-6" class="tether-target">6</div>
   <div id="tether-target-7" class="tether-target">7</div>
 
-  {{#ember-tether
-      target=exampleTargetSelector
-      targetAttachment="top right"
-      attachment="top left"
-      class="tethered-thing"
-      offset=exampleOffset
-  }}
+  <EmberTether
+    @target={{this.exampleTargetSelector}}
+    @targetAttachment="top right"
+    @attachment="top left"
+    class="tethered-thing"
+    @offset={{this.exampleOffset}}
+  >
     A tethered thing
-  {{/ember-tether}}
+  </EmberTether>
 
-  {{#ember-tether
-      target="#tether-target-3"
-      targetAttachment=exampleTargetAttachment
-      attachment=exampleAttachment
-      class="another-tethered-thing"
-      constraints=exampleConstraints
-  }}
+  <EmberTether
+    @target="#tether-target-3"
+    @targetAttachment={{this.exampleTargetAttachment}}
+    @attachment={{this.exampleAttachment}}
+    class="another-tethered-thing"
+    @constraints={{this.exampleConstraints}}
+  >
     Another tethered thing
-  {{/ember-tether}}
+  </EmberTether>
 
-  {{#ember-tether
-      target=exampleTargetWithin
-      targetAttachment="top right"
-      attachment="top left"
-      class="third-tethered-thing"
-  }}
+  <EmberTether
+    @target={{this.exampleTargetWithin}}
+    @targetAttachment="top right"
+    @attachment="top left"
+    class="third-tethered-thing"
+  >
     A third tethered thing
-    Target in DOM: <span class="highlight">{{isShowingTargetWithin}}</span>
-    <button {{action "toggleTargetWithin"}}>Toggle Target</button>
-  {{/ember-tether}}
+    Target in DOM: <span class="highlight">{{this.isShowingTargetWithin}}</span>
+    <button {{on 'click' this.toggleTargetWithin}} type="button">Toggle Target</button>
+  </EmberTether>
 
-  {{#ember-tether
-      target=exampleTargetComponent
-      targetAttachment="top right"
-      attachment="top left"
-      class="component-tether"
-  }}
+  <EmberTether
+    @target={{this.exampleTargetComponent}}
+    @targetAttachment="top right"
+    @attachment="top left"
+    class="component-tether"
+  >
     Component
-  {{/ember-tether}}
+  </EmberTether>
 
 
-  {{#ember-tether
-      target="#tether-target-5"
-      targetAttachment="top right"
-      attachment="top left"
-      class="accessible-thing"
-      offset=exampleOffset
-      ariaRole="region"
-      aria-atomic="true"
-      aria-busy="true"
-      aria-controls="element-id"
-      aria-current="current-element-id"
-      aria-describedby="described-element-id"
-      aria-details="details-element-id"
-      aria-disabled="true"
-      aria-errormessage="errormessage-element-id"
-      aria-flowto="flowto-elemenet-id"
-      aria-haspopup="grid"
-      aria-hidden="true"
-      aria-invalid="true"
-      aria-keyshortcuts="A"
-      aria-label="tether-label"
-      aria-labelledby="labelledby-element-id"
-      aria-live="polite"
-      aria-owns="owns-element-id"
-      aria-relevant="additions"
-      aria-roledescription="tether-role-description"
-  }}
+  <EmberTether
+    @target="#tether-target-5"
+    @targetAttachment="top right"
+    @attachment="top left"
+    @offset={{this.exampleOffset}}
+    class="accessible-thing"
+    aria-atomic="true"
+    aria-busy="true"
+    aria-controls="element-id"
+    aria-current="page"
+    aria-describedby="described-element-id"
+    aria-details="details-element-id"
+    aria-flowto="flowto-elemenet-id"
+    aria-hidden="true"
+    aria-keyshortcuts="A"
+    aria-label="tether-label"
+    aria-labelledby="labelledby-element-id"
+    aria-live="polite"
+    aria-owns="owns-element-id"
+    aria-relevant="additions"
+    aria-roledescription="tether-role-description"
+    role="region"
+  >
     A tethered thing with aria attributes
-  {{/ember-tether}}
+  </EmberTether>
 
 </div>

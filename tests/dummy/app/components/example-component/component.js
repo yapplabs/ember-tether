@@ -1,16 +1,18 @@
-import { run } from '@ember/runloop';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  classNames: ['example-component'],
+export default class ExampleComponent extends Component {
+  element;
 
-  didInsertElement() {
-    run.schedule('afterRender', () => {
-      if (this.isDestroying || this.isDestroyed) {
-        return;
-      }
-      // eslint-disable-next-line
-      this.sendAction('registerComponentTarget', this);
-    });
+  @action
+  registerComponent(element) {
+    this.element = element;
+    // schedule('afterRender', () => {
+    if (this.isDestroying || this.isDestroyed) {
+      return;
+    }
+    // eslint-disable-next-line
+      this.args.registerComponentTarget(this);
+    // });
   }
-});
+}

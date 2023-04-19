@@ -1,16 +1,15 @@
-import { isNone } from '@ember/utils';
-import { observer, set, get, computed } from '@ember/object';
-import { run } from '@ember/runloop';
 import Controller from '@ember/controller';
+import { isNone } from '@ember/utils';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Controller.extend({
-  exampleTarget: 1,
-  exampleTargetSelector: computed('exampleTarget', function() {
-    return `#tether-target-${get(this, 'exampleTarget')}`;
-  }),
+export default class ApplicationController extends Controller {
+  @tracked exampleTarget = 1;
+  get exampleTargetSelector() {
+    return `#tether-target-${this.exampleTarget}`;
+  }
 
-  // eslint-disable-next-line
-  attachmentConfigurations: [
+  attachmentConfigurations = [
     { targetAttachment: 'top left', attachment: 'top right' },
     { targetAttachment: 'middle left', attachment: 'top right' },
     { targetAttachment: 'bottom left', attachment: 'top right' },
@@ -22,80 +21,84 @@ export default Controller.extend({
     { targetAttachment: 'top right', attachment: 'top left' },
     { targetAttachment: 'top right', attachment: 'bottom left' },
     { targetAttachment: 'top center', attachment: 'bottom left' },
-    { targetAttachment: 'top left', attachment: 'bottom left' }
-  ],
-  attachmentConfigurationIndex: 0,
+    { targetAttachment: 'top left', attachment: 'bottom left' },
+  ];
 
-  exampleTargetAttachment: computed('attachmentConfigurationIndex', function() {
-    let i = get(this, 'attachmentConfigurationIndex');
-    let config = get(this, 'attachmentConfigurations')[i];
+  @tracked attachmentConfigurationIndex = 0;
+
+  @tracked _exampleTargetAttachment;
+  get exampleTargetAttachment() {
+    if (this._exampleTargetAttachment) return this._exampleTargetAttachment;
+
+    let i = this.attachmentConfigurationIndex;
+    let config = this.attachmentConfigurations[i];
     return config.targetAttachment;
-  }),
-  exampleAttachment: computed('attachmentConfigurationIndex', function() {
-    let i = get(this, 'attachmentConfigurationIndex');
-    let config = get(this, 'attachmentConfigurations')[i];
+  }
+  set exampleTargetAttachment(val) {
+    this._exampleTargetAttachment = val;
+  }
+  @tracked _exampleAttachment;
+  get exampleAttachment() {
+    if (this._exampleAttachment) return this._exampleAttachment;
+
+    let i = this.attachmentConfigurationIndex;
+    let config = this.attachmentConfigurations[i];
     return config.attachment;
-  }),
+  }
+  set exampleAttachment(val) {
+    this._exampleAttachment = val;
+  }
 
-  exampleOffset: null,
-  exampleConstraintsOn: computed('exampleConstraints', function() {
-    if (get(this, 'exampleConstraints')) {
-      return 'on';
-    } else {
-      return 'off';
-    }
-  }),
-  exampleConstraints: null,
+  @tracked exampleOffset;
 
-  isShowingTargetWithin: true,
-  computedTargetWithin: computed('isShowingTargetWithin', function() {
-    if (get(this, 'isShowingTargetWithin')) {
-      return '#tether-target-2 .within';
-    }
-  }),
-  exampleTargetWithin: '#tether-target-2 .within',
+  @tracked exampleConstraints = null;
+  get exampleConstraintsOn() {
+    return this.exampleConstraints ? 'on' : 'off';
+  }
 
-  computedTargetWithinDidChange: observer('isShowingTargetWithin', function() {
-    run.next(() => {
-      set(this, 'exampleTargetWithin', get(this, 'computedTargetWithin'));
-    });
-  }),
+  @tracked isShowingTargetWithin = true;
 
-  actions: {
-    registerComponentTarget(component) {
-      this.set('exampleTargetComponent', component);
-    },
-    switchTether() {
-      let dt = get(this, 'exampleTarget');
-      let nt = dt === 7 ? 1 : dt + 1;
-      set(this, 'exampleTarget', nt);
-    },
-    rotateTether() {
-      let numConfigs = get(this, 'attachmentConfigurations').length;
-      let i = get(this, 'attachmentConfigurationIndex');
-      let nc = i === (numConfigs - 1) ? 0 : i + 1;
-      set(this, 'attachmentConfigurationIndex', nc);
-    },
-    toggleOffset() {
-      if (isNone(get(this, 'exampleOffset'))) {
-        set(this, 'exampleOffset', '0 -20px');
-      } else {
-        set(this, 'exampleOffset', null);
-      }
-    },
-    toggleConstraints() {
-      if (isNone(get(this, 'exampleConstraints'))) {
-        set(this, 'exampleConstraints', [{
+  get exampleTargetWithin() {
+    return this.isShowingTargetWithin ? '#tether-target-2 .within' : undefined;
+  }
+
+  @tracked exampleTargetComponent;
+  @action registerComponentTarget(component) {
+    this.exampleTargetComponent = component;
+  }
+
+  @action switchTether() {
+    let dt = this.exampleTarget;
+    let nt = dt === 7 ? 1 : dt + 1;
+    this.exampleTarget = nt;
+  }
+
+  @action rotateTether() {
+    let numConfigs = this.attachmentConfigurations.length;
+    let i = this.attachmentConfigurationIndex;
+    let nc = i === numConfigs - 1 ? 0 : i + 1;
+    this.attachmentConfigurationIndex = nc;
+  }
+
+  @action toggleOffset() {
+    this.exampleOffset = isNone(this.exampleOffset) ? '0 -20px' : null;
+  }
+
+  @action toggleConstraints() {
+    if (isNone(this.exampleConstraints)) {
+      this.exampleConstraints = [
+        {
           to: 'scrollParent',
           attachment: 'together',
-          pin: true
-        }]);
-      } else {
-        set(this, 'exampleConstraints', null);
-      }
-    },
-    toggleTargetWithin() {
-      this.toggleProperty('isShowingTargetWithin');
+          pin: true,
+        },
+      ];
+    } else {
+      this.exampleConstraints = null;
     }
   }
-});
+
+  @action toggleTargetWithin() {
+    this.isShowingTargetWithin = !this.isShowingTargetWithin;
+  }
+}
