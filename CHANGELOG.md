@@ -1,12 +1,6 @@
 # Change Log
 
-
-
 ## v3.0.0 (2023-05-05)
-
-## v3.0.0-1 (2023-05-05)
-
-## v3.0.0-0 (2023-04-19)
 
 #### :boom: Breaking Change
 * [#111](https://github.com/yapplabs/ember-tether/pull/111) Ember 4.12 compatibility ([@lukemelia](https://github.com/lukemelia))
