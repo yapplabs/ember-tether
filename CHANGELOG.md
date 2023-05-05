@@ -9,6 +9,7 @@
 #### :boom: Breaking Change
 * [#111](https://github.com/yapplabs/ember-tether/pull/111) Ember 4.12 compatibility ([@lukemelia](https://github.com/lukemelia))
 
+If you are passing `@class=...` to ember-tether, this will no longer work. Pass `class=...` instead.
 #### :rocket: Enhancement
 * [#111](https://github.com/yapplabs/ember-tether/pull/111) Ember 4.12 compatibility ([@lukemelia](https://github.com/lukemelia))
 
