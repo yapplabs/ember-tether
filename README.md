@@ -41,13 +41,13 @@ Given the following DOM:
 and a template like this:
 
 ```hbs
-{{#ember-tether
-    target='#a-nice-person'
-    targetAttachment='top right'
-    attachment='top left'
-}}
+<EmberTether
+  @target='#a-nice-person'
+  @targetAttachment='top right'
+  @attachment='top left'
+>
   A puppy
-{{/ember-tether}}
+</EmberTether>
 ```
 
 Then "A puppy" would be rendered alongside the `a-nice-person` div.
@@ -56,20 +56,20 @@ If the ember-tether component is destroyed, its far-off content is destroyed too
 For example, given:
 
 ```hbs
-{{#if isShowing}}
-  {{#ember-tether
-      target='#a-nice-person'
-      targetAttachment='top right'
-      attachment='top left'
-  }}
+{{#if this.isShowing}}
+  <EmberTether
+    @target='#a-nice-person'
+    @targetAttachment='top right'
+    @attachment='top left'
+  >
     A puppy
-  {{/ember-tether}}
+  </EmberTether>
 {{/if}}
 ```
 
-If `isShowing` starts off true and becomes false, then the "A puppy" text will be removed from the page.
+If `this.isShowing` starts off true and becomes false, then the "A puppy" text will be removed from the page.
 
-Similarly, if you use `ember-tether` in a route's template, it will
+Similarly, if you use `<EmberTether />` in a route's template, it will
 render its content next to the target element when the route is entered
 and remove it when the route is exited.
 
