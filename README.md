@@ -5,8 +5,8 @@ This ember-cli addon provides a component that allows for 'tethering' a block to
 
 ## Compatibility
 
-* Ember.js v4.4 or above
-* Ember CLI v4.4 or above
+* Ember.js v3.28 or above
+* Ember CLI v3.28 or above
 * Node.js v14 or above
 
 For Ember 1.13 - 2.3, use 0.4.1. For support for earlier versions of Ember, use ember-tether 0.3.1.

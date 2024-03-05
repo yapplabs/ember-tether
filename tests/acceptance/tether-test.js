@@ -1,3 +1,4 @@
+/* eslint-disable qunit/require-expect */
 import { click, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import QUnit from 'qunit';
@@ -26,7 +27,7 @@ module('Acceptance | tether test', function (hooks) {
     let withinOnePixel = topDifference < 1;
     assert.ok(
       withinOnePixel,
-      `${thingSelector} top within one pixel of ${targetSelector} top, difference was ${topDifference}`
+      `${thingSelector} top within one pixel of ${targetSelector} top, difference was ${topDifference}`,
     );
   };
   assert.leftOf = function (thingSelector, targetSelector) {
@@ -55,7 +56,7 @@ module('Acceptance | tether test', function (hooks) {
     assert.equal(
       thing.getAttribute(attributeName),
       attributeValue,
-      `${attributeName} has value ${attributeValue}`
+      `${attributeName} has value ${attributeValue}`,
     );
   };
 
@@ -98,7 +99,7 @@ module('Acceptance | tether test', function (hooks) {
     assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
     assert.strictEqual(
       document.querySelector('.third-tethered-thing .highlight').textContent,
-      'true'
+      'true',
     );
 
     await click('.third-tethered-thing button');
@@ -106,7 +107,7 @@ module('Acceptance | tether test', function (hooks) {
     assert.classAbsent('.third-tethered-thing', 'ember-tether-enabled');
     assert.strictEqual(
       document.querySelector('.third-tethered-thing .highlight').textContent,
-      'false'
+      'false',
     );
 
     await click('.third-tethered-thing button');
@@ -116,7 +117,7 @@ module('Acceptance | tether test', function (hooks) {
     assert.classPresent('.third-tethered-thing', 'ember-tether-enabled');
     assert.strictEqual(
       document.querySelector('.third-tethered-thing .highlight').textContent,
-      'true'
+      'true',
     );
   });
 
@@ -145,7 +146,7 @@ module('Acceptance | tether test', function (hooks) {
       assert.attribute(
         '.accessible-thing',
         attributeName,
-        expectedAttributes[attributeName]
+        expectedAttributes[attributeName],
       );
     });
   });
