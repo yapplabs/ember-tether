@@ -1,5 +1,18 @@
 # Change Log
 
+
+## v3.1.0 (2024-03-12)
+
+#### :rocket: Enhancement
+* [#129](https://github.com/yapplabs/ember-tether/pull/129) Update to Ember v5.4 with ember-cli-update ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* [#128](https://github.com/yapplabs/ember-tether/pull/128) use pnpm ([@mansona](https://github.com/mansona))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Sergey Astapov ([@SergeAstapov](https://github.com/SergeAstapov))
+
 ## v3.0.0 (2023-05-05)
 
 #### :boom: Breaking Change
