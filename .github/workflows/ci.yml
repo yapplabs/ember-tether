@@ -1,8 +1,5 @@
 name: CI
 
-env:
-  VOLTA_FEATURE_PNPM: 1
-
 on:
   push:
     branches:
@@ -21,22 +18,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Install volta
-        uses: volta-cli/action@v4
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        id: cache
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          version: 7
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint
@@ -50,22 +40,14 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Install volta
-        uses: volta-cli/action@v4
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        id: cache
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: pnpm
       - name: Install Dependencies
         run: pnpm install --no-lockfile
       - name: Run Tests
@@ -93,21 +75,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install volta
-        uses: volta-cli/action@v4
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        id: cache
+      - uses: pnpm/action-setup@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          version: 7
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Run Tests
