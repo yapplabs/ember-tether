@@ -20,6 +20,7 @@
 /package.json.ember-try
 /package-lock.json.ember-try
 /yarn.lock.ember-try
+/pnpm-lock.yaml.ember-try
 
 # broccoli-debug
 /DEBUG/
