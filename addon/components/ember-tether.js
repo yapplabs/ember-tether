@@ -20,6 +20,10 @@ export default class EmberTetherComponent extends Component {
   }
 
   get bodyElement() {
+    if (this.args.bodyElement) {
+      return document.getElementById(this.args.bodyElement);
+    }
+
     let config = this.emberTetherConfig;
     if (config && config.bodyElementId) {
       return document.getElementById(config.bodyElementId);

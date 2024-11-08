@@ -52,6 +52,9 @@
   <div id="tether-target-5" class="tether-target">5</div>
   <div id="tether-target-6" class="tether-target">6</div>
   <div id="tether-target-7" class="tether-target">7</div>
+  <div id="tether-target-8" class="tether-target">8</div>
+
+  <div id="body-element"></div>
 
   <EmberTether
     @target={{this.exampleTargetSelector}}
@@ -118,6 +121,16 @@
     role="region"
   >
     A tethered thing with aria attributes
+  </EmberTether>
+
+  <EmberTether
+    @bodyElement="body-element"
+    @target="#tether-target-8"
+    @targetAttachment="top right"
+    @attachment="top left"
+    class="a-tethered-thing-with-body-element"
+  >
+    Another tethered thing with bodyElement
   </EmberTether>
 
 </div>

@@ -60,6 +60,16 @@ module('Acceptance | tether test', function (hooks) {
     );
   };
 
+  assert.parentHasId = function (thingSelector, parentId) {
+    let thing = document.querySelector(thingSelector);
+    let parent = thing.parentElement;
+    assert.equal(
+      parent.id,
+      parentId,
+      `${thingSelector}'s parent has id ${parentId}`,
+    );
+  };
+
   test('tethering a thing to a target', async function (assert) {
     await visit('/');
 
@@ -67,6 +77,8 @@ module('Acceptance | tether test', function (hooks) {
     assert.rightOf('.tethered-thing', '#tether-target-1');
     assert.topAligned('.another-tethered-thing', '#tether-target-3');
     assert.leftOf('.another-tethered-thing', '#tether-target-3');
+
+    assert.parentHasId('.tethered-thing', 'ember-testing');
   });
 
   test('tethering to an Ember Component', async function (assert) {
@@ -149,5 +161,17 @@ module('Acceptance | tether test', function (hooks) {
         expectedAttributes[attributeName],
       );
     });
+  });
+
+  test('bodyElement', async function (assert) {
+    await visit('/');
+
+    assert.topAligned(
+      '.a-tethered-thing-with-body-element',
+      '#tether-target-8',
+    );
+    assert.rightOf('.a-tethered-thing-with-body-element', '#tether-target-8');
+
+    assert.parentHasId('.a-tethered-thing-with-body-element', 'body-element');
   });
 });
