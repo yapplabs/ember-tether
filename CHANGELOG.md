@@ -1,6 +1,8 @@
 # Change Log
 
 
+## v3.1.1 (2025-11-30)
+
 ## v3.1.0 (2024-03-12)
 
 #### :rocket: Enhancement
