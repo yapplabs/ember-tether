@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.23.2",
-    "@ember/render-modifiers": "^2.0.5",
+    "@ember/render-modifiers": "^3.0.0",
     "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
