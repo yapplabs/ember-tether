@@ -24,8 +24,8 @@ importers:
         specifier: ^6.3.0
         version: 6.3.0
       tether:
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^3.0.2
+        version: 3.0.2
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.22.15
@@ -6047,8 +6047,8 @@ packages:
     engines: {node: '>= 7.*'}
     hasBin: true
 
-  tether@3.0.1:
-    resolution: {integrity: sha512-NgsyyyuoM1c5O6V7s27faj+ignd7TXKRd/7BPTSJTm4TNUEX035cliDvHVh6eivHUdbiq4sWO5EMgBfaWiZQfg==}
+  tether@3.0.2:
+    resolution: {integrity: sha512-eICJAAmQ5XU0hEAeoB04VtkHqCRoENxe7/uMggQuYYikMpuPIwm0nq/HsJs6M+tJj/AyQO/9Yz5RLR32oOKrmw==}
     engines: {node: '>= 20', pnpm: '>= 10'}
 
   text-table@0.2.0:
@@ -14082,7 +14082,7 @@ snapshots:
       - walrus
       - whiskers
 
-  tether@3.0.1: {}
+  tether@3.0.2: {}
 
   text-table@0.2.0: {}
 
