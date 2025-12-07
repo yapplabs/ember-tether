@@ -34,7 +34,7 @@
     "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
-    "tether": "^2.0.0"
+    "tether": "^3.0.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
@@ -82,7 +82,7 @@
     "ember-source": "~3.28.0 || ^4.0.0 || >= 5.0.0"
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">= 18"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
